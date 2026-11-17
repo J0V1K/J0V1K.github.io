@@ -972,8 +972,8 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       if (t !== undefined) { n.vx += Math.sin(t * .00045 + n.ph) * .012; n.vy += Math.cos(t * .00038 + n.ph2) * .012; }
       if (i === drag) { n.vx = n.vy = 0; return; }
       n.vx *= .86; n.vy *= .86; n.x += n.vx; n.y += n.vy;
-      const hw = n.tw / 2 + 6;
-      n.x = Math.max(hw, Math.min(GW - hw, n.x)); n.y = Math.max(22, Math.min(GH - BOT, n.y));
+      const M = GW < 600 ? 22 : 64, hw = n.tw / 2 + M;
+      n.x = Math.max(hw, Math.min(GW - hw, n.x)); n.y = Math.max(22 + M * .6, Math.min(GH - BOT - M * .3, n.y));
     });
   }
   function drawGraph() {
@@ -998,7 +998,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         g.fillStyle = C[n.k]; g.beginPath(); g.arc(n.x, n.y, 3, 0, Math.PI * 2); g.fill(); return;
       }
       g.font = `${work || i === act ? 500 : 400} ${fs}px "IBM Plex Mono", monospace`;
-      const tw = n.lw, lx = Math.max(tw / 2 + 6, Math.min(GW - tw / 2 - 6, n.x)), bx = lx - tw / 2 - 4, by = n.y - fs / 2 - (work ? 5 : 2), bw = tw + 8, bh = fs + (work ? 10 : 4);
+      const tw = n.lw, lx = Math.max(tw / 2 + (GW < 600 ? 14 : 40), Math.min(GW - tw / 2 - (GW < 600 ? 14 : 40), n.x)), bx = lx - tw / 2 - 4, by = n.y - fs / 2 - (work ? 5 : 2), bw = tw + 8, bh = fs + (work ? 10 : 4);
       g.fillStyle = C.bg; g.fillRect(bx, by, bw, bh);
       if (work) {
         g.strokeStyle = i === act ? C.cs : C.work; g.lineWidth = 1;
