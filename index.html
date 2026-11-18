@@ -258,6 +258,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
 .stage .cap-l { box-shadow: 0 1px 0 rgba(17,18,20,var(--ra,1)); }
 .stage .sheet a { color: inherit; text-decoration-color: rgba(17,18,20,var(--ra,1)); }
 .stage .copy { opacity: calc(.7 * var(--ra,1)); }
+.nb { white-space: nowrap; }
 .w, .kw { display: inline-block; text-indent: 0; transform-origin: 50% 50%; }
 .kw { transition: color .5s; }
 .kw.lit[data-k="law"] { color: var(--law); }
@@ -432,15 +433,11 @@ input[type=range] { width: 100%; accent-color: var(--red); }
           <span class="glegend"><span><i class="box"></i>work</span><span><i style="background:var(--law)"></i>law</span><span><i style="background:var(--cs)"></i>computing</span><span><i style="background:var(--both)"></i>both</span></span>
         </div>
         <div class="ginfo" id="ginfo" aria-live="polite"></div>
+        <footer class="endfoot"><span>&copy; 2026 Javokhir Arifov. All rights reserved.</span></footer>
       </div>
     </div>
    </div>
     <div class="hint">Scroll to file this brief ↓</div>
-  </div>
-</section>
-<section class="index">
-  <div class="in">
-    <div class="endfoot"><span>&copy; 2026 Javokhir Arifov. All rights reserved.</span></div>
   </div>
 </section>
 </div>
@@ -809,6 +806,17 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       });
       t.replaceWith(frag);
     });
+    /* Keep a key term glued to punctuation that touches it, so "Evaluation," never breaks before the comma */
+    root.querySelectorAll('.kw').forEach(k => {
+      const isUnit = n => n && n.nodeType === 1 && n.classList.contains('w');
+      let a = k, b = k;
+      while (isUnit(a.previousSibling)) a = a.previousSibling;
+      while (isUnit(b.nextSibling)) b = b.nextSibling;
+      if (a === b) return;
+      const nb = document.createElement('span'); nb.className = 'nb';
+      a.before(nb);
+      let n = a; while (n) { const next = n === b ? null : n.nextSibling; nb.appendChild(n); n = next; }
+    });
   }
   splitWordsIn(sheet1.querySelector('.lines'));
   const peekSheet = document.getElementById('p2peek');
@@ -1009,7 +1017,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       if (i === drag) { n.vx = n.vy = 0; return; }
       n.vx *= .86; n.vy *= .86; n.x += n.vx; n.y += n.vy;
       const M = GW < 600 ? 22 : 64, hw = n.tw / 2 + M;
-      n.x = Math.max(hw, Math.min(GW - hw, n.x)); n.y = Math.max(22 + M * .6, Math.min(GH - BOT - M * .3, n.y));
+      n.x = Math.max(hw, Math.min(GW - hw, n.x)); n.y = Math.max(18 + M * .3, Math.min(GH - BOT - M * .2, n.y));
     });
   }
   function drawGraph() {
