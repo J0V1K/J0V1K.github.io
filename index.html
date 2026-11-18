@@ -55,6 +55,11 @@ body[data-stage="graph"] { --hdr-bg: rgba(11,14,19,.9); --hdr-ink: var(--dark-in
 }
 .top .row { max-width: 1000px; margin: 0 auto; height: 48px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .brand { color: inherit; text-decoration: none; font-size: 17px; white-space: nowrap; }
+/* Graph stage: the brand becomes a shell prompt and the nav reads as file names */
+.brand .b-cmd { display: none; font-family: var(--font-mono); font-size: 13.5px; }
+body[data-stage="graph"] .brand .b-name { display: none; }
+body[data-stage="graph"] .brand .b-cmd { display: inline; }
+body[data-stage="graph"] .top nav a { text-transform: lowercase; }
 .top nav { display: flex; gap: 2px; overflow-x: auto; scrollbar-width: none; }
 .top nav::-webkit-scrollbar { display: none; }
 .top nav a { color: inherit; opacity: .62; text-decoration: none; font-family: var(--font-mono); font-size: 12.5px; padding: 6px 9px; white-space: nowrap; }
@@ -335,6 +340,8 @@ input[type=range] { width: 100%; accent-color: var(--red); }
 @media (max-width: 520px) {
   .top nav a[data-nav="brief"] { display: none; }
   .top nav a { padding: 6px 6px; font-size: 12px; }
+  .brand .b-host { display: none; }
+  .brand .b-cmd { font-size: 12.5px; }
   .auth { padding-left: 0; text-indent: 0; }
   .lrow { grid-template-columns: minmax(0, 1fr) auto; }
   .lrow .lead { display: none; }
@@ -350,7 +357,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
 <body>
 <header class="top">
   <div class="row">
-    <a class="brand" href="#brief">Javokhir Arifov</a>
+    <a class="brand" href="#brief"><span class="b-name">Javokhir Arifov</span><span class="b-cmd prompt" aria-hidden="true"><span class="b-host"><b>javokhir@stanford</b>:</span>~$ <span class="cmd">ls filings/</span></span></a>
     <nav aria-label="Site">
       <a href="#brief" data-nav="brief">Brief</a>
       <a href="#interests" data-nav="graph">Interests</a>
@@ -431,14 +438,8 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     <div class="hint">Scroll to file this brief ↓</div>
   </div>
 </section>
-<section class="index" aria-labelledby="h-index">
+<section class="index">
   <div class="in">
-    <h2 id="h-index" class="prompt" style="font-size:13.5px;font-weight:400"><b>javokhir@stanford</b>:~$ <span class="cmd">ls filings/</span></h2>
-    <ul>
-      <li><a href="#authorities"><span class="f">table_of_authorities</span><span class="d">Publications and papers under review, with citations.</span><span class="go2">open →</span></a></li>
-      <li><a href="#exhibits"><span class="f">exhibits_a_to_k</span><span class="d">Research, coursework, and industry projects, from AI in state courts to a constructed language.</span><span class="go2">open →</span></a></li>
-      <li><a href="#record"><span class="f">declaration_of_record</span><span class="d">Teaching, fellowships, and reviewing.</span><span class="go2">open →</span></a></li>
-    </ul>
     <div class="endfoot"><span>Javokhir Arifov</span></div>
   </div>
 </section>
