@@ -180,6 +180,10 @@ h3.cat { font-size: var(--fs); line-height: var(--lh); font-weight: 700; margin-
 .exh { display: flex; flex-direction: column; }
 .exh + .exh { margin-top: var(--lh); }
 .exh .t { font-weight: 700; font-size: var(--fs); }
+.finds { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
+@media (max-width: 520px) { .finds { grid-template-columns: minmax(0, 1fr); } }
+.finds li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; border-bottom: 1px dotted #c9c9c4; }
+.finds b { font-variant-numeric: tabular-nums; }
 .exh .m { font-style: italic; color: var(--ink-soft); }
 .exh code { font-family: var(--font-mono); font-size: .86em; background: color-mix(in srgb, var(--mark) 45%, transparent); padding: 0 3px; border-radius: 2px; }
 .extab { position: absolute; right: 0; top: 150px; transform: translateX(100%); background: var(--mark); color: var(--ink); font: 700 12px var(--font-sans); letter-spacing: .08em; writing-mode: vertical-rl; padding: 12px 5px; border-radius: 0 4px 4px 0; box-shadow: 2px 1px 3px rgba(0,0,0,.12); }
@@ -512,8 +516,15 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       <section class="exh" id="ex-a" aria-labelledby="h-exa">
         <h2 class="h-brief u">EXHIBIT A</h2>
         <h3 class="t" id="h-exa">Generative AI in state civil courts</h3>
-        <p class="m">Stanford RegLab, 2026 to present, with Daniel E. Ho.</p>
-        <p class="para">I lead a team measuring AI-written text in civil litigation across four state trial court systems. We built <code>PhantomDocket</code>, a dataset of filings with verified AI use and matched controls. We found that off-the-shelf detector estimates are unstable across settings, so we developed <code>ScoreMix</code>, a threshold-agnostic prevalence estimator.</p>
+        <p class="m">Stanford RegLab, 2026.</p>
+        <p class="para">I lead a team measuring AI-assisted drafting in four state trial court systems. Detectors struggle here: a quarter of filing tokens are boilerplate, and one detector flagged under 5% to almost 50% of filings depending on its settings. We built <code>PhantomDocket</code>, 980 filings known to have used generative AI, and <code>ScoreMix</code>, an estimator robust to those settings. In 127,518 complaints, prevalence is near zero before 2023, then rises sharply.</p>
+        <ul class="finds" aria-label="Estimated share of 2026 complaints with AI-assisted drafting">
+          <li><span>Santa Clara, self-represented</span><b>72%</b></li>
+          <li><span>Santa Clara, all</span><b>38%</b></li>
+          <li><span>San Francisco</span><b>36%</b></li>
+          <li><span>Oklahoma and Tulsa</span><b>16&ndash;17%</b></li>
+        </ul>
+        <p class="fig-cap">Share of 2026 complaints with AI-assisted drafting. Likely conservative.</p>
         <div class="figure">
           <div class="fig-head"><b>Fig. 1. Why a fixed detector threshold misleads</b><span>illustrative, synthetic</span></div>
           <div class="seg" role="group" aria-label="Writing setting">
@@ -531,7 +542,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
             <div><span>Share above threshold</span><strong id="r-naive">0%</strong></div>
             <div><span>Error</span><strong id="r-err" class="bad">0 pts</strong></div>
           </div>
-          <p class="fig-cap">Formal legal prose tends to score higher on AI detectors than everyday writing. Switch the setting and the same threshold overcounts. ScoreMix estimates prevalence without picking a threshold.</p>
+          <p class="fig-cap">Legal prose scores higher on AI detectors than everyday writing, so the same threshold overcounts. ScoreMix needs no threshold.</p>
         </div>
       </section>
     </div>
