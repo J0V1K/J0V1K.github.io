@@ -71,6 +71,9 @@ body[data-stage="graph"] .top nav a { text-transform: lowercase; }
 .top nav a.on { opacity: 1; color: var(--hdr-on); box-shadow: inset 0 -2px 0 currentColor; }
 
 /* ---------- Pleading paper ---------- */
+.back-graph { position: fixed; z-index: 5; top: calc(48px + 24px + env(safe-area-inset-top, 0px)); left: max(16px, calc(50% - 408px - 132px)); font: 12.5px var(--font-mono); color: var(--ink); text-decoration: none; background: var(--sheet); border: 1px solid var(--ink-soft); border-radius: 999px; padding: 5px 12px; box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+.back-graph:hover { background: var(--ink); color: var(--sheet); }
+@media (max-width: 1100px) { .back-graph { top: auto; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); left: max(16px, env(safe-area-inset-left, 0px)); } }
 .deskfoot { font: 12px/1.4 var(--font-legal); color: var(--ink-soft); text-align: center; }
 .desk { padding-block: 32px 56px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 32px; justify-items: center; }
 .sheet {
@@ -420,6 +423,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
 </style>
 </head>
 <body>
+<a class="back-graph" id="back-graph" href="#interests" hidden aria-label="Back to the interests graph"><span aria-hidden="true">&larr;</span> Interests</a>
 <header class="top">
   <div class="row">
     <a class="brand" href="#brief"><span class="b-name">Javokhir Arifov</span><span class="b-cmd prompt" aria-hidden="true"><span class="b-host"><b>javokhir@stanford</b>:</span>~$ <span class="cmd">ls filings/</span></span></a>
@@ -1329,7 +1333,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     const d = down; down = null; drag = -1; wg.classList.remove('dragging');
     if (d && d.moved) { settleUntil = performance.now() + 1400; pendingHomes = true; }
     if (!d || d.moved) return;
-    if (d.i >= 0 && nodes[d.i].k === 'work') { const h = nodes[d.i].work.links[0][1]; if (h.startsWith('#')) go(h); return; }
+    if (d.i >= 0 && nodes[d.i].k === 'work') { const h = nodes[d.i].work.links[0][1]; if (h.startsWith('#')) { backFrom = d.i; go(h); } return; }
     sel = (d.i >= 0 && d.i !== sel) ? d.i : -1; setInfo();
   };
   wg.addEventListener('pointerup', endDrag); wg.addEventListener('pointercancel', endDrag);
@@ -1431,6 +1435,10 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     const [v, target] = resolve(location.hash.slice(1));
     const changed = v !== current;
     if (changed) show(v);
+    /* "Back to the graph" arrow: shown on paper pages reached from a graph node, until you leave via the nav or go home */
+    if (v === 'home') backBtn.hidden = true;
+    else if (backFrom !== null) backBtn.hidden = false;
+    if (v === 'home' && target === 'graph' && backFrom !== null) { if (backFrom >= 0) { sel = backFrom; setInfo(); } backFrom = null; }
     if (v === 'home') {
       const top = target === 'graph' ? pinStart + scrollLen : 0;
       scrollTo({ top, behavior: changed ? 'auto' : 'smooth' });
@@ -1444,11 +1452,15 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     update(); onStage();
   }
   /* Flash only when a link to a piece of work brought us here, not on load, back/forward or a typed URL */
-  let flashNext = false;
+  let flashNext = false, backFrom = null;
+  const backBtn = document.getElementById('back-graph');
   function go(h) { flashNext = true; if (location.hash === h) route(); else location.hash = h; }
   document.addEventListener('click', ev => {
     const a = ev.target.closest('a[href^="#"]'); if (!a) return;
-    ev.preventDefault(); go(a.getAttribute('href'));
+    ev.preventDefault();
+    if (a.closest('#ginfo')) backFrom = sel >= 0 ? sel : hover;
+    else if (a.closest('.top')) { backFrom = null; backBtn.hidden = true; }
+    go(a.getAttribute('href'));
   });
   addEventListener('hashchange', route);
 
