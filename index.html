@@ -150,6 +150,32 @@ h3.cat { font-size: var(--fs); line-height: var(--lh); font-weight: 700; margin-
 
 
 /* Small bar figure (Ex. G) */
+/* Fig. 2 column chart (Ex. G) */
+.colchart .cc { display: grid; grid-template-columns: auto auto minmax(0, 1fr); grid-template-rows: 200px auto; column-gap: 8px; margin-top: 8px; }
+.cc-ytitle { grid-row: 1; grid-column: 1; writing-mode: vertical-rl; transform: rotate(180deg); text-align: center; font-size: 11.5px; color: var(--f-dim); }
+.cc-y { grid-row: 1; grid-column: 2; position: relative; width: 30px; font: 11px var(--font-mono); color: var(--f-dim); }
+.cc-y span { position: absolute; right: 0; bottom: calc(var(--t) * 1%); transform: translateY(50%); }
+.cc-plot { grid-row: 1; grid-column: 3; position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 14px; align-items: end; border-left: 1px solid var(--f-ink); border-bottom: 1px solid var(--f-ink); padding: 0 10px; }
+.cc-grid { position: absolute; inset: 0; pointer-events: none; }
+.cc-grid i { position: absolute; left: 0; right: 0; bottom: calc(var(--t) * 1%); border-top: 1px dashed var(--f-line); }
+.cc-col { position: relative; height: 100%; display: flex; justify-content: center; align-items: flex-end; }
+.cc-col i { position: relative; display: block; width: 100%; max-width: 56px; height: calc(var(--v) * 1%); min-height: 2px; background: var(--f-hu); border-radius: 2px 2px 0 0; }
+.cc-col.hi i { background: var(--f-ai); }
+.cc-col b { position: absolute; left: 50%; bottom: 100%; transform: translateX(-50%); margin-bottom: 3px; font: 500 12px var(--font-mono); color: var(--f-ink); white-space: nowrap; }
+.cc-col.hi b { bottom: auto; top: 6px; margin: 0; color: #fff; }
+.cc-cat { position: absolute; left: 50%; bottom: 100%; transform: translateX(-50%); width: 46px; height: auto; margin-bottom: -3px; }
+.cc-x { grid-row: 2; grid-column: 3; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0 14px; padding: 6px 10px 0; font-size: 11.5px; line-height: 1.3; color: var(--f-ink); text-align: center; }
+.cc-x .s { display: none; }
+@media (max-width: 520px) {
+  .colchart .cc { grid-template-rows: 170px auto; column-gap: 4px; }
+  .cc-ytitle { display: none; }
+  .cc-y { width: 28px; font-size: 10px; }
+  .cc-plot, .cc-x { gap: 0 6px; padding-inline: 4px; }
+  .cc-x { font-size: 10.5px; }
+  .cc-x .l { display: none; } .cc-x .s { display: inline; }
+  .cc-col b { font-size: 10px; }
+  .cc-cat { width: 32px; }
+}
 .bars { margin: var(--lh) 0 0; display: grid; gap: 6px; font-family: var(--font-sans); text-indent: 0; }
 .bars figcaption { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 2px; }
 .bar { display: grid; grid-template-columns: minmax(0, 15em) minmax(0, 1fr) 3.4em; align-items: center; gap: 10px; font-size: 13px; line-height: 1.3; color: var(--ink-soft); }
@@ -507,12 +533,12 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       <h3 class="cat">Coursework</h3>
       <p class="ldr idx"><a href="#ex-e"><span class="k">E</span>Xaliwar, a constructed language</a><span class="lead"></span><span class="y">5</span></p>
       <p class="ldr idx"><a href="#ex-f"><span class="k">F</span>Structure-aware pretraining for legal retrieval</a><span class="lead"></span><span class="y">6</span></p>
-      <p class="ldr idx"><a href="#ex-g"><span class="k">G</span>Shuffling subliminal sequences</a><span class="lead"></span><span class="y">6</span></p>
-      <p class="ldr idx"><a href="#ex-h"><span class="k">H</span>Implicit bias in AI-generated discharge summaries</a><span class="lead"></span><span class="y">7</span></p>
-      <p class="ldr idx"><a href="#ex-i"><span class="k">I</span>Eviction notice defect tool</a><span class="lead"></span><span class="y">7</span></p>
-      <p class="ldr idx"><a href="#ex-j"><span class="k">J</span>MindMap, clustering student responses</a><span class="lead"></span><span class="y">8</span></p>
+      <p class="ldr idx"><a href="#ex-g"><span class="k">G</span>Shuffling subliminal sequences</a><span class="lead"></span><span class="y">7</span></p>
+      <p class="ldr idx"><a href="#ex-h"><span class="k">H</span>Implicit bias in AI-generated discharge summaries</a><span class="lead"></span><span class="y">8</span></p>
+      <p class="ldr idx"><a href="#ex-i"><span class="k">I</span>Eviction notice defect tool</a><span class="lead"></span><span class="y">8</span></p>
+      <p class="ldr idx"><a href="#ex-j"><span class="k">J</span>MindMap, clustering student responses</a><span class="lead"></span><span class="y">9</span></p>
       <h3 class="cat">Industry</h3>
-      <p class="ldr idx"><a href="#ex-k"><span class="k">K</span>Applied science, Graphika</a><span class="lead"></span><span class="y">9</span></p>
+      <p class="ldr idx"><a href="#ex-k"><span class="k">K</span>Applied science, Graphika</a><span class="lead"></span><span class="y">10</span></p>
     </div>
     <div class="foot"><span class="pg">- 1 -</span><span class="dt">Index of Exhibits</span></div>
   </article>
@@ -643,8 +669,8 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     <div class="foot"><span class="pg">- 5 -</span><span class="dt">Exhibits</span></div>
   </article>
 
-  <article class="sheet" aria-label="Exhibits F and G">
-    <span class="extab" aria-hidden="true">EXHIBIT F</span><span class="extab" aria-hidden="true">EXHIBIT G</span>
+  <article class="sheet" aria-label="Exhibit F">
+    <span class="extab" aria-hidden="true">EXHIBIT F</span>
     <div class="nums" aria-hidden="true"></div>
     <div class="lines">
       <section class="exh" id="ex-f" aria-labelledby="h-exf">
@@ -653,22 +679,39 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         <p class="m">CS 422 research project, with Joshua Rizo.</p>
         <p class="para"><a href="https://arxiv.org/abs/2310.10638" target="_blank" rel="noopener">In-Context Pretraining</a> (Shi et al., 2024) packs related documents into the same training context instead of random ones, and models trained this way reason better across documents. I extracted cross-references from 205 California landlord-tenant statutes, built a citation graph, and packed documents four ways for masked-language-model pretraining: random, citation-only, hierarchy, and cite-graph. Most cross-references pointed to nearby sections that hierarchy packing already keeps together, and the rarer cross-chapter links were too sparse, and too low in our packing priority, to make a difference.</p>
       </section>
+    </div>
+    <div class="foot"><span class="pg">- 6 -</span><span class="dt">Exhibits</span></div>
+  </article>
+
+  <article class="sheet" aria-label="Exhibit G">
+    <span class="extab" aria-hidden="true">EXHIBIT G</span>
+    <div class="nums" aria-hidden="true"></div>
+    <div class="lines">
       <section class="exh" id="ex-g" aria-labelledby="h-exg">
         <h2 class="h-brief u">EXHIBIT G</h2>
         <h3 class="t" id="h-exg">Shuffling subliminal sequences</h3>
-        <p class="m">CS 221M final project, with Evelyn Yee and Amir Zur. <a class="xref" href="https://github.com/J0V1K/mechinterp-project" target="_blank" rel="noopener">Code ↗</a></p>
-        <p class="para">A model fine-tuned on numbers written by a cat-loving teacher comes to love cats too (Cloud et al.). A single prompt with &ldquo;entangled&rdquo; number tokens can do the same without any training (Zur et al.). We asked what carries the signal: single tokens, n-grams, or the full sequence order. We replicated the fine-tuning effect in <code>Qwen2.5-7B</code> with LoRA, then trained on shuffled copies of the data. Even one swapped pair of numbers erased the effect. In prompting, order mattered less than how many entangled tokens the prompt contained.</p>
-        <figure class="bars" aria-label="Rate at which the fine-tuned model picks cat, by training data">
-          <figcaption>Picks &ldquo;cat&rdquo; after fine-tuning on&hellip;</figcaption>
-          <div class="bar hi"><span>the teacher&rsquo;s numbers, intact</span><i style="--v:66.2"></i><b>66.2%</b></div>
-          <div class="bar"><span>one adjacent pair swapped</span><i style="--v:3.3"></i><b>3.3%</b></div>
-          <div class="bar"><span>numbers shuffled across responses</span><i style="--v:2.8"></i><b>2.8%</b></div>
-          <div class="bar"><span>one digit replaced</span><i style="--v:2.4"></i><b>2.4%</b></div>
-          <div class="bar"><span>neutral numbers (control)</span><i style="--v:1.6"></i><b>1.6%</b></div>
+        <p class="m">CS 221M final project, with Evelyn Yee. <a class="xref" href="https://github.com/J0V1K/mechinterp-project" target="_blank" rel="noopener">Code ↗</a></p>
+        <p class="para">A model fine-tuned on numbers written by a cat-loving teacher comes to love cats too (Cloud et al.). A single prompt with &ldquo;entangled&rdquo; number tokens can do the same without any training (Zur et al.). We asked what carries the signal: single tokens, n-grams, or the full sequence order. We replicated the fine-tuning effect in <code>Qwen2.5-7B</code> with LoRA, then trained on shuffled copies of the data. Even one swapped pair of numbers erased the effect. In prompting, order mattered less than how many entangled tokens the prompt contained. We conclude that subliminal learning is far too sensitive to be a true AI safety concern.</p>
+        <figure class="figure colchart" aria-label="Share of answers picking cat after fine-tuning on each version of the teacher's numbers">
+          <div class="fig-head"><b>Fig. 2. How often the fine-tuned model picks &ldquo;cat&rdquo;</b></div>
+          <div class="cc">
+            <div class="cc-ytitle">share of answers that pick cat</div>
+            <div class="cc-y"><span style="--t:100">100%</span><span style="--t:75">75%</span><span style="--t:50">50%</span><span style="--t:25">25%</span><span style="--t:0">0%</span></div>
+            <div class="cc-plot">
+              <div class="cc-grid"><i style="--t:100"></i><i style="--t:75"></i><i style="--t:50"></i><i style="--t:25"></i></div>
+              <div class="cc-col hi"><i style="--v:66.2"><b>66.2%</b><img class="cc-cat" src="images/cat.png" alt="" width="206" height="240"></i></div>
+              <div class="cc-col"><i style="--v:3.3"><b>3.3%</b></i></div>
+              <div class="cc-col"><i style="--v:2.8"><b>2.8%</b></i></div>
+              <div class="cc-col"><i style="--v:2.4"><b>2.4%</b></i></div>
+              <div class="cc-col"><i style="--v:1.6"><b>1.6%</b></i></div>
+            </div>
+            <div class="cc-x"><span><span class="l">The teacher&rsquo;s numbers, intact</span><span class="s">Intact</span></span><span><span class="l">One adjacent pair swapped</span><span class="s">1 swap</span></span><span><span class="l">Shuffled across responses</span><span class="s">Shuffled</span></span><span><span class="l">One digit replaced</span><span class="s">1 digit</span></span><span><span class="l">Neutral numbers (control)</span><span class="s">Control</span></span></div>
+          </div>
+          <p class="fig-cap">Each bar is a model fine-tuned on a different version of the teacher&rsquo;s numbers. Breaking the order in any way drops it to the neutral baseline.</p>
         </figure>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 6 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 7 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibits H and I">
@@ -688,7 +731,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         <p class="para">A tool that flags potential defects in eviction notices, guides client interviews, and drafts filings, with human review at each step. I built the defense taxonomy with attorneys and revised the tool from legal aid feedback.</p>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 7 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 8 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibit J">
@@ -711,7 +754,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         </div>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 8 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 9 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibit K">
@@ -725,7 +768,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         <p class="para">Built embedding and retrieval pipelines over 1.38M social media posts, and evaluation infrastructure for multilingual retrieval and frontier language models in analyst workflows.</p>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 9 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 10 -</span><span class="dt">Exhibits</span></div>
   </article>
 
 </div>
