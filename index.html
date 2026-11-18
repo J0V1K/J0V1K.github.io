@@ -1153,6 +1153,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     { label: 'Teaching', name: 'Teaching record', links: [['Service', '#teaching'], ['Section notes', '#section-notes']], w: ['education', 'AI ethics'] },
     { label: 'Service', name: 'Fellowships and reviewing', links: [['Service', '#fellowships']], w: ['law', 'legal research', 'education', 'AI governance'] }
   ];
+  const ANCHOR = { 'law': -1, 'generative AI': 1 };
   const LAW = ['law', 'courts', 'legal research', 'statutory law', 'housing law', 'access to justice', 'AI governance', 'institutional capacity'];
   const LANG = ['linguistics', 'constructed languages', 'syntax'];
   const OTHER = ['education', 'human supervision', 'discrimination', 'AI ethics', 'machine minds'];
@@ -1208,6 +1209,9 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     }
     nodes.forEach((n, i) => {
       const sm = GW < 600; n.vx += (cx - n.x) * (sm ? .0016 : .0011) * alpha; n.vy += (cy - n.y) * (sm ? .002 : .0024) * alpha;
+      /* Anchor the two biggest hubs near the middle, side by side, so the rest of the graph arranges around them */
+      const anchor = ANCHOR[n.w];
+      if (anchor !== undefined) { n.vx += (cx + anchor * Math.min(GW, 1100) * .07 - n.x) * .012; n.vy += (cy - n.y) * .012; }
       if (t !== undefined) { n.vx += Math.sin(t * .00045 + n.ph) * .012; n.vy += Math.cos(t * .00038 + n.ph2) * .012; }
       if (i === drag) { n.vx = n.vy = 0; return; }
       n.vx *= .86; n.vy *= .86; n.x += n.vx; n.y += n.vy;
