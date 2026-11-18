@@ -991,11 +991,12 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     nodes.forEach(n => { n.dot = FS < 1 && n.k !== 'work' && n.c === 1; g.font = `${n.k === 'work' ? 500 : 400} ${fontSize(n)}px "IBM Plex Mono", monospace`; n.lw = g.measureText(n.w).width + (n.k === 'work' ? 14 : 0); n.tw = n.dot ? 8 : n.lw; });
   }
   function tick(alpha, t) {
-    const L = Math.min(GW, 1100) * .11, cx = GW / 2, cy = (GH - BOT) / 2 + 12;
+    const hs = GW < 600 ? 1 : Math.min(1, (GH - BOT) / 640);   // short desktop windows: pull the graph in so the top and bottom rows don't pile up
+    const L = Math.min(GW, 1100) * .11 * hs, cx = GW / 2, cy = (GH - BOT) / 2 + 12;
     for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
       const p = nodes[i], q = nodes[j]; let dx = q.x - p.x, dy = q.y - p.y, d2 = dx * dx + dy * dy;
       if (d2 < 1) { dx = rnd() - .5; dy = rnd() - .5; d2 = 1; }
-      const d = Math.sqrt(d2), f = (GW < 600 ? 1300 : 4200) * alpha / d2;
+      const d = Math.sqrt(d2), f = (GW < 600 ? 1300 : 4200 * hs * hs) * alpha / d2;
       p.vx -= f * dx / d; p.vy -= f * dy / d; q.vx += f * dx / d; q.vy += f * dy / d;
     }
     edges.forEach(e => {
