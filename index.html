@@ -165,6 +165,9 @@ h3.cat { font-size: var(--fs); line-height: var(--lh); font-weight: 700; margin-
 .syl .sh { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; font-weight: 700; }
 .syl .rd { padding-left: .5in; text-indent: -.25in; margin-left: .25in; }
 .syl .when { font-weight: 400; font-variant-numeric: tabular-nums; }
+.shot { margin: var(--lh) 0 0; }
+.shot a { display: block; border: 1px solid #ddd; line-height: 0; }
+.shot img { width: 100%; height: auto; display: block; }
 .sketches { margin-top: var(--lh); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .sketches a { display: block; border: 1px solid #ddd; line-height: 0; }
 .sketches img { width: 100%; height: auto; display: block; }
@@ -585,6 +588,10 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         <h3 class="t" id="h-exd">Infinite Story: generative AI in an intro programming assignment</h3>
         <p class="m">SIGCSE Nifty Assignments, 2025; CS 106A, Summer 2025. <a class="xref" href="https://nifty.stanford.edu/2025/piech-infinite-story/" target="_blank" rel="noopener">Nifty ↗</a> <a class="xref" href="https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1258/assignments/4-infinitestory/" target="_blank" rel="noopener">CS 106A ↗</a></p>
         <p class="para">Students build a choose-your-own-adventure game that calls a language model to write new scenes whenever the story reaches one nobody has written yet. I am a co-author of the assignment and wrote its ethics component with Dan Webber, a reflection on what it means to hand storytelling to a generative model.</p>
+        <figure class="shot">
+          <a href="images/infinite-story.jpg" target="_blank" rel="noopener"><img src="images/infinite-story.jpg" alt="Infinite Story running: a generated painting of a brick building by a stream beside a terminal that reads You are standing at the end of a road before a small brick building, with three numbered choices." loading="lazy" width="1400" height="760"></a>
+          <figcaption class="fig-cap">The starter story in CS 106A. Each scene gets a generated image, and the player picks the next move in the terminal.</figcaption>
+        </figure>
       </section>
     </div>
     <div class="foot"><span class="pg">- 4 -</span><span class="dt">Exhibits</span></div>
