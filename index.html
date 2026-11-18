@@ -952,7 +952,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     { label: 'ECHR Guides', name: 'How legal guidance changes over time (Ex. C)', links: [['Ex. C', '#ex-c']], w: ['legal research'] },
     { label: 'Graphika Retrieval', name: 'Applied science at Graphika (Ex. K)', links: [['Ex. K', '#ex-k']], w: ['linguistics', 'retrieval', 'embeddings', 'evaluation', 'generative AI'] },
     { label: 'Subliminal Shuffling', name: 'Shuffling subliminal sequences, CS 221M (Ex. G)', links: [['Ex. G', '#ex-g'], ['Code', 'https://github.com/J0V1K/mechinterp-project']], w: ['interpretability', 'training', 'generative AI', 'AI safety'] },
-    { label: 'EHR Bias Audit', name: 'Implicit bias in AI-generated discharge summaries (Ex. H)', links: [['Ex. H', '#ex-h'], ['Code', 'https://github.com/J0V1K/ehr-bias-analysis-329r']], w: ['embeddings', 'evaluation', 'generative AI', 'bias'] },
+    { label: 'EHR Bias Audit', name: 'Implicit bias in AI-generated discharge summaries (Ex. H)', links: [['Ex. H', '#ex-h'], ['Code', 'https://github.com/J0V1K/ehr-bias-analysis-329r']], w: ['embeddings', 'evaluation', 'generative AI', 'discrimination'] },
     { label: 'Xaliwar', name: 'Xaliwar, a constructed language (Ex. E)', links: [['Ex. E', '#ex-e']], w: ['linguistics', 'constructed languages', 'syntax'] },
     { label: 'Cite-Graph Pretraining', name: 'Citation-graph pretraining for legal reasoning, CS 422 (Ex. F)', links: [['Ex. F', '#ex-f']], w: ['legal research', 'statutory law', 'training', 'retrieval', 'generative AI'] },
     { label: 'MindMap', name: 'MindMap: clustering student responses, CS 293 (Ex. J)', links: [['Ex. J', '#ex-j']], w: ['education', 'clustering', 'embeddings', 'evaluation', 'generative AI'] },
@@ -964,7 +964,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
   ];
   const LAW = ['courts', 'legal research', 'statutory law', 'housing law', 'access to justice', 'AI governance', 'institutional capacity'];
   const LANG = ['linguistics', 'constructed languages', 'syntax'];
-  const OTHER = ['education', 'human supervision', 'bias', 'AI ethics', 'machine minds'];
+  const OTHER = ['education', 'human supervision', 'discrimination', 'AI ethics', 'machine minds'];
   const kindOf = w => LAW.includes(w) ? 'law' : LANG.includes(w) ? 'lang' : OTHER.includes(w) ? 'other' : 'cs';
   const nodes = [], idx = {}, edges = [];
   works.forEach(wk => { wk.node = nodes.length; nodes.push({ w: wk.label, k: 'work', c: 3, work: wk }); });
