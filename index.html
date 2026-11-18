@@ -154,6 +154,11 @@ h3.cat { font-size: var(--fs); line-height: var(--lh); font-weight: 700; margin-
 @media (max-width: 520px) { .bar { grid-template-columns: minmax(0, 1fr) 3.4em; } .bar i { grid-column: 1 / -1; grid-row: 2; } .bar b { grid-row: 1; grid-column: 2; } }
 
 /* Hand-drawn section notes (Service, Exhibit 1) */
+.syl { list-style: none; padding: 0; }
+.syl > li { display: flex; flex-direction: column; }
+.syl .sh { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; font-weight: 700; }
+.syl .rd { padding-left: .5in; text-indent: -.25in; margin-left: .25in; }
+.syl .when { font-weight: 400; font-variant-numeric: tabular-nums; }
 .sketches { margin-top: var(--lh); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .sketches a { display: block; border: 1px solid #ddd; line-height: 0; }
 .sketches img { width: 100%; height: auto; display: block; }
@@ -358,7 +363,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
 
 <!-- ================= HOME ================= -->
 <div class="view" id="view-home">
-<section class="morph" id="morph" aria-label="Researcher's Opening Brief, page 1. Scrolling files this page into a word graph.">
+<section class="morph" id="morph" aria-label="Opening Brief, page 1. Scrolling files this page into a word graph.">
   <div class="stage">
    <div class="papers">
     <article class="sheet" id="p1" aria-label="Page 1">
@@ -396,7 +401,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         <p class="para lede">I study how <span class="kw" data-node="AI text">AI</span> is entering <span class="kw" data-node="legal institutions">legal institutions</span> and how to improve the development of legal technology.</p>
         <p class="para">I'm motivated by the belief that technology can help us improve access to justice, but critical work is desperately needed to ensure the responsible and safe use of digital systems. I collaborate with the talented researchers at the Stanford <span class="kw" data-node="regulation">Regulation</span>, <span class="kw" data-node="evaluation">Evaluation</span>, and <span class="kw" data-node="AI governance">Governance</span> Lab (RegLab). My interests include <span class="kw" data-node="empirical legal studies">empirical legal studies</span>, AI in <span class="kw" data-node="state courts">courts</span> and legal institutions, <span class="kw" data-node="legal NLP">legal NLP</span> <span class="kw" data-node="evaluation">evaluation</span>, <span class="kw" data-node="institutional capacity">institutional capacity</span> for <span class="kw" data-node="AI governance">AI governance</span>, and technical <span class="kw" data-node="AI safety">AI safety</span>.</p>
       </div>
-      <div class="foot"><span class="pg">- 1 -</span><span class="dt">Researcher&rsquo;s Opening Brief</span></div>
+      <div class="foot"><span class="pg">- 1 -</span><span class="dt">Opening Brief</span></div>
     </article>
     <article class="sheet peek" id="p2peek" aria-hidden="true">
       <div class="nums"></div>
@@ -698,7 +703,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
           <ul class="rows">
             <li><span>Instructor, CS 109ACE</span><span class="when">2025&ndash;26</span></li>
             <li><span>Lecturer, CS 198B</span><span class="when">Fall 2025</span></li>
-            <li><span>Co-instructor, SLE 99, <i>Man or Machine?</i></span><span class="when">Spring 2025</span></li>
+            <li><span>Co-instructor, SLE 99, <a href="#sle-99"><i>Man or Machine?</i></a></span><span class="when">Spring 2025</span></li>
             <li><span>Teaching Assistant, CS 106A SSEA</span><span class="when">Summer 2024</span></li>
             <li><span>Section Leader, CS 106A/B</span><span class="when">2023&ndash;25</span></li>
           </ul>
@@ -743,6 +748,36 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       </section>
     </div>
     <div class="foot"><span class="pg">- 2 -</span><span class="dt">Declaration of Javokhir Arifov</span></div>
+  </article>
+
+  <article class="sheet" aria-labelledby="h-ex2">
+    <span class="extab" aria-hidden="true">EXHIBIT 2</span>
+    <div class="nums" aria-hidden="true"></div>
+    <div class="lines">
+      <section class="exh" id="sle-99">
+        <h2 class="h-brief u" id="h-ex2">EXHIBIT 2</h2>
+        <h3 class="t">Syllabus, SLE 99, <i>Man or Machine?</i></h3>
+        <p class="m">Student-led seminar, Spring 2025. Co-taught with Philip Baillargeon and Andrew Lee. Contact details and logistics omitted.</p>
+        <p class="para">Technology has been in human history longer than human history itself. As new machines and tools emerge, societies and human interaction change too. This begs the question: What is truly human, and what is machine? In this seminar, we will explore seminal texts in computer science, philosophy, and critical theory seeking to understand our modern life with machines. Case studies will explore Large Language Model consciousness, decision making supported by Artificial Intelligence, and symbiotic relationships between people and technology.</p>
+        <ol class="syl">
+          <li><span class="sh"><span>1. Consciousness</span><span class="when">April 18</span></span>
+            <span class="rd">Chalmers, &ldquo;Could a Large Language Model be Conscious?&rdquo;</span>
+            <span class="rd">Sokolowski, <i>Introduction to Phenomenology</i>, chs. 1&ndash;2</span></li>
+          <li><span class="sh"><span>2. Wittgenstein and Heidegger</span><span class="when">May 2</span></span>
+            <span class="rd">Heidegger, <i>Being and Time</i>, &sect;&sect; 14&ndash;16</span>
+            <span class="rd">Wittgenstein, <i>Philosophical Investigations</i>, selections; Malcolm, commentary</span></li>
+          <li><span class="sh"><span>3. From Machine Intelligence to Artificial Intelligence</span><span class="when">May 9</span></span>
+            <span class="rd">Turing, &ldquo;Computing Machinery and Intelligence&rdquo;</span>
+            <span class="rd">Dreyfus and Dreyfus, &ldquo;Making a Mind versus Modeling the Brain&rdquo;</span></li>
+          <li><span class="sh"><span>4. How Did We Get Here?</span><span class="when">May 23</span></span>
+            <span class="rd">Weizenbaum, <i>Computer Power and Human Reason</i>, intro. and ch. 8</span>
+            <span class="rd">Winograd, &ldquo;Thinking Machines: Can There Be? Are We?&rdquo;</span></li>
+          <li><span class="sh"><span>5. Cyberfeminism: Where Do We Go?</span><span class="when">June 6</span></span>
+            <span class="rd">Haraway, &ldquo;A Cyborg Manifesto,&rdquo; parts 1&ndash;3</span></li>
+        </ol>
+      </section>
+    </div>
+    <div class="foot"><span class="pg">- 3 -</span><span class="dt">Declaration of Javokhir Arifov</span></div>
   </article>
 </div>
 
@@ -899,7 +934,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
 
   /* ---------- Graph data: works (boxed) linked to their keywords ---------- */
   const works = [
-    { label: 'Opening Brief', name: "Researcher's Opening Brief, page 1", links: [['Page 1', '#brief']], w: ['computer science', 'linguistics', 'legal institutions', 'regulation', 'evaluation', 'AI governance', 'AI text', 'empirical legal studies', 'state courts', 'legal NLP', 'institutional capacity', 'AI safety'] },
+    { label: 'Opening Brief', name: "Opening Brief, page 1", links: [['Page 1', '#brief']], w: ['computer science', 'linguistics', 'legal institutions', 'regulation', 'evaluation', 'AI governance', 'AI text', 'empirical legal studies', 'state courts', 'legal NLP', 'institutional capacity', 'AI safety'] },
     { label: 'Detection Objection', name: 'Detection Objection: AI text in U.S. state courts (Ex. A)', links: [['Ex. A', '#ex-a'], ['Publication', '#toa-a']], w: ['AI text', 'state courts', 'civil filings', 'detection', 'calibration', 'prevalence', 'ScoreMix', 'PhantomDocket', 'evaluation'] },
     { label: 'Legal Retrieval Benchmark', name: 'A Reasoning-Focused Legal Retrieval Benchmark and Housing Statute QA (Ex. B)', links: [['Ex. B', '#ex-b'], ['Publication', '#toa-b'], ['Paper', 'https://doi.org/10.1145/3709025.3712219']], w: ['legal retrieval', 'benchmarks', 'reasoning', 'bar exam', 'housing law', 'LLMs', 'evaluation', 'legal NLP', 'datasets', 'state statutes'] },
     { label: 'Eviction Defense Tool', name: 'Eviction notice defect tool (Ex. I)', links: [['Ex. I', '#ex-i'], ['Class report', 'https://justiceinnovation.law.stanford.edu/ai-for-legal-help-2026-class-report-scoping-building-and-testing-new-legal-aid-tech-systems/']], w: ['eviction defense', 'legal aid', 'housing law', 'human review'] },
@@ -912,7 +947,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     { label: 'MindMap', name: 'MindMap: clustering student responses, CS 293 (Ex. J)', links: [['Ex. J', '#ex-j']], w: ['CS education', 'clustering', 'LLMs', 'embeddings', 'evaluation', 'teaching'] },
     { label: 'Capacity Before Control', name: 'Capacity Before Control (Machina, Issue 3)', links: [['Read', 'https://online.fliphtml5.com/symsyssociety/Machina_issue3/'], ['Publication', '#toa-d']], w: ['AI governance', 'institutional capacity', 'policy', 'regulation'] },
     { label: 'Infinite Story', name: 'Infinite Story, generative AI in CS education (Ex. D)', links: [['Ex. D', '#ex-d'], ['Nifty', 'https://nifty.stanford.edu/2025/piech-infinite-story/'], ['CS 106A', 'https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1258/assignments/4-infinitestory/'], ['Publication', '#toa-c']], w: ['CS education', 'assignments', 'LLMs', 'AI ethics'] },
-    { label: 'Man or Machine?', name: 'SLE 99: Man or Machine? (student-led seminar)', links: [['Service', '#teaching']], w: ['philosophy of AI', 'LLM consciousness', 'AI ethics', 'teaching'] },
+    { label: 'Man or Machine?', name: 'SLE 99: Man or Machine? (student-led seminar)', links: [['Syllabus', '#sle-99'], ['Service', '#teaching']], w: ['philosophy of AI', 'LLM consciousness', 'AI ethics', 'teaching'] },
     { label: 'Teaching', name: 'Teaching record', links: [['Service', '#teaching'], ['Section notes', '#section-notes']], w: ['CS education', 'teaching', 'CS 106A', 'CS 109'] },
     { label: 'Reviewing', name: 'Fellowships and reviewing', links: [['Service', '#fellowships']], w: ['legal NLP', 'CS education', 'case law', 'AI governance'] }
   ];
@@ -1178,7 +1213,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     if (VIEWS[h] && h !== 'home') return [h, null];
     if (/^ex-[a-k]$/.test(h)) return ['exhibits', h];
     if (/^toa-[a-d]$/.test(h)) return ['authorities', h];
-    if (h === 'teaching' || h === 'fellowships' || h === 'section-notes') return ['record', h];
+    if (h === 'teaching' || h === 'fellowships' || h === 'section-notes' || h === 'sle-99') return ['record', h];
     if (h === 'graph') return ['home', 'graph'];
     return ['home', 'brief'];
   }
