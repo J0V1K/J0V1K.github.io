@@ -194,6 +194,7 @@ h3.cat { font-size: var(--fs); line-height: var(--lh); font-weight: 700; margin-
 .shot { margin: var(--lh) 0 0; }
 .shot a { display: block; border: 1px solid #ddd; line-height: 0; }
 .shot img { width: 100%; height: auto; display: block; }
+.shot figcaption { text-align: center; }
 .sketches { margin-top: var(--lh); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .sketches a { display: block; border: 1px solid #ddd; line-height: 0; }
 .sketches img { width: 100%; height: auto; display: block; }
@@ -621,7 +622,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         <p class="para">Students build a choose-your-own-adventure game that calls a language model to write new scenes whenever the story reaches one nobody has written yet. I am a co-author of the assignment and wrote its ethics component with Dan Webber, a reflection on what it means to hand storytelling to a generative model.</p>
         <figure class="shot">
           <a href="images/infinite-story.jpg" target="_blank" rel="noopener"><img src="images/infinite-story.jpg" alt="Infinite Story running: a generated painting of a brick building by a stream beside a terminal that reads You are standing at the end of a road before a small brick building, with three numbered choices." loading="lazy" width="1400" height="760"></a>
-          <figcaption class="fig-cap">The starter story in CS 106A. Each scene gets a generated image, and the player picks the next move in the terminal.</figcaption>
+          <figcaption class="fig-cap">The starter story in Infinite Story.</figcaption>
         </figure>
       </section>
     </div>
@@ -691,7 +692,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         <h2 class="h-brief u">EXHIBIT G</h2>
         <h3 class="t" id="h-exg">Shuffling subliminal sequences</h3>
         <p class="m">CS 221M final project, with Evelyn Yee. <a class="xref" href="https://github.com/J0V1K/mechinterp-project" target="_blank" rel="noopener">Code ↗</a></p>
-        <p class="para">A model fine-tuned on numbers written by a cat-loving teacher comes to love cats too (Cloud et al.). A single prompt with &ldquo;entangled&rdquo; number tokens can do the same without any training (Zur et al.). We asked what carries the signal: single tokens, n-grams, or the full sequence order. We replicated the fine-tuning effect in <code>Qwen2.5-7B</code> with LoRA, then trained on shuffled copies of the data. Even one swapped pair of numbers erased the effect. In prompting, order mattered less than how many entangled tokens the prompt contained. We conclude that subliminal learning is far too sensitive to be a true AI safety concern.</p>
+        <p class="para">A model fine-tuned on numbers written by a cat-loving teacher comes to love cats too (Cloud et al.). A single prompt with &ldquo;entangled&rdquo; number tokens can do the same without any training (Zur et al.). We asked what carries the signal: single tokens, n-grams, or the full sequence order. We replicated the fine-tuning effect in Qwen2.5-7B with LoRA, then trained on shuffled copies of the data. Even one swapped pair of numbers erased the effect. In prompting, order mattered less than how many entangled tokens the prompt contained. We conclude that subliminal learning is far too sensitive to be a true AI safety concern.</p>
         <figure class="figure colchart" aria-label="Share of answers picking cat after fine-tuning on each version of the teacher's numbers">
           <div class="fig-head"><b>Fig. 2. How often the fine-tuned model picks &ldquo;cat&rdquo;</b></div>
           <div class="cc">
