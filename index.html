@@ -506,7 +506,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       <p class="ldr idx"><a href="#ex-d"><span class="k">D</span>Infinite Story, generative AI in CS education</a><span class="lead"></span><span class="y">4</span></p>
       <h3 class="cat">Coursework</h3>
       <p class="ldr idx"><a href="#ex-e"><span class="k">E</span>Xaliwar, a constructed language</a><span class="lead"></span><span class="y">5</span></p>
-      <p class="ldr idx"><a href="#ex-f"><span class="k">F</span>Citation-graph pretraining for legal reasoning</a><span class="lead"></span><span class="y">6</span></p>
+      <p class="ldr idx"><a href="#ex-f"><span class="k">F</span>Structure-aware pretraining for legal retrieval</a><span class="lead"></span><span class="y">6</span></p>
       <p class="ldr idx"><a href="#ex-g"><span class="k">G</span>Shuffling subliminal sequences</a><span class="lead"></span><span class="y">6</span></p>
       <p class="ldr idx"><a href="#ex-h"><span class="k">H</span>Implicit bias in AI-generated discharge summaries</a><span class="lead"></span><span class="y">7</span></p>
       <p class="ldr idx"><a href="#ex-i"><span class="k">I</span>Eviction notice defect tool</a><span class="lead"></span><span class="y">7</span></p>
@@ -649,9 +649,9 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     <div class="lines">
       <section class="exh" id="ex-f" aria-labelledby="h-exf">
         <h2 class="h-brief u">EXHIBIT F</h2>
-        <h3 class="t" id="h-exf">Citation-graph pretraining for legal reasoning</h3>
+        <h3 class="t" id="h-exf">Structure-aware pretraining for legal retrieval</h3>
         <p class="m">CS 422 research project, with Joshua Rizo.</p>
-        <p class="para"><a href="https://arxiv.org/abs/2310.10638" target="_blank" rel="noopener">In-Context Pretraining</a> (Shi et al., 2024) packs related documents into the same training context instead of random ones, and models trained this way reason better across documents. I extracted cross-references from California statutes, built a citation graph, and packed documents four ways for masked-language-model pretraining: random, citation-only, hierarchy, and cite-graph. All four performed about the same on a citation-edge ranking probe. Citation edges were too sparse next to chapter structure, and most cross-references point to nearby sections that simpler packing already keeps together.</p>
+        <p class="para"><a href="https://arxiv.org/abs/2310.10638" target="_blank" rel="noopener">In-Context Pretraining</a> (Shi et al., 2024) packs related documents into the same training context instead of random ones, and models trained this way reason better across documents. I extracted cross-references from 205 California landlord-tenant statutes, built a citation graph, and packed documents four ways for masked-language-model pretraining: random, citation-only, hierarchy, and cite-graph. Most cross-references pointed to nearby sections that hierarchy packing already keeps together, and the rarer cross-chapter links were too sparse, and too low in our packing priority, to make a difference.</p>
       </section>
       <section class="exh" id="ex-g" aria-labelledby="h-exg">
         <h2 class="h-brief u">EXHIBIT G</h2>
@@ -1029,7 +1029,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     { label: 'Subliminal Shuffling', name: 'Shuffling subliminal sequences, CS 221M (Ex. G)', links: [['Ex. G', '#ex-g'], ['Code', 'https://github.com/J0V1K/mechinterp-project']], w: ['interpretability', 'training', 'generative AI', 'AI safety'] },
     { label: 'EHR Bias Audit', name: 'Implicit bias in AI-generated discharge summaries (Ex. H)', links: [['Ex. H', '#ex-h'], ['Code', 'https://github.com/J0V1K/ehr-bias-analysis-329r']], w: ['embeddings', 'evaluation', 'generative AI', 'discrimination'] },
     { label: 'Xaliwar', name: 'Xaliwar, a constructed language (Ex. E)', links: [['Ex. E', '#ex-e']], w: ['linguistics', 'constructed languages', 'syntax'] },
-    { label: 'Cite-Graph Pretraining', name: 'Citation-graph pretraining for legal reasoning, CS 422 (Ex. F)', links: [['Ex. F', '#ex-f']], w: ['legal research', 'statutory law', 'training', 'retrieval', 'generative AI'] },
+    { label: 'Cite-Graph Pretraining', name: 'Structure-aware pretraining for legal retrieval, CS 422 (Ex. F)', links: [['Ex. F', '#ex-f']], w: ['legal research', 'statutory law', 'training', 'retrieval', 'generative AI'] },
     { label: 'MindMap', name: 'MindMap: clustering student responses, CS 293 (Ex. J)', links: [['Ex. J', '#ex-j']], w: ['education', 'clustering', 'embeddings', 'evaluation', 'generative AI'] },
     { label: 'Capacity Before Control', name: 'Capacity Before Control (Machina, Issue 3)', links: [['Read', 'https://online.fliphtml5.com/symsyssociety/Machina_issue3/'], ['Publication', '#toa-d']], w: ['generative AI', 'AI governance', 'institutional capacity'] },
     { label: 'Infinite Story', name: 'Infinite Story, generative AI in CS education (Ex. D)', links: [['Ex. D', '#ex-d'], ['Nifty', 'https://nifty.stanford.edu/2025/piech-infinite-story/'], ['CS 106A', 'https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1258/assignments/4-infinitestory/'], ['Publication', '#toa-c']], w: ['education', 'generative AI', 'AI ethics'] },
