@@ -153,6 +153,7 @@ h3.cat { font-size: var(--fs); line-height: var(--lh); font-weight: 700; margin-
 figure.figure { margin-inline: 0; }
 /* Fig. 3 butterfly chart (Ex. H) */
 .butterfly { --bf-max: 40; align-self: stretch; }
+.butterfly + .butterfly { margin-top: 12px; }
 .bf-head, .bf { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 0; }
 .bf-head { font-size: 11.5px; color: var(--f-dim); margin-bottom: 4px; }
 .bf-head span:first-child { text-align: right; padding-right: 8px; }
@@ -165,7 +166,6 @@ figure.figure { margin-inline: 0; }
 .bf-l i, .bf-r i { display: block; height: 14px; width: calc((100% - 120px) * var(--v) / var(--bf-max)); background: var(--f-ai); flex: none; }
 .bf-r i { background: var(--f-hu); }
 .bf-l i { border-radius: 2px 0 0 2px; } .bf-r i { border-radius: 0 2px 2px 0; }
-.bf-l.gone i { background: repeating-linear-gradient(135deg, var(--f-ai) 0 3px, transparent 3px 6px); outline: 1px solid var(--f-ai); outline-offset: -1px; }
 .bf b { font: 500 12px var(--font-mono); color: var(--f-ink); white-space: nowrap; }
 .bf span { font: 11px var(--font-mono); color: var(--f-dim); }
 @media (max-width: 520px) { .bf span { display: none; } .bf b { font-size: 10.5px; } .bf-l, .bf-r { gap: 4px; } .bf-l i, .bf-r i { width: calc((100% - 66px) * var(--v) / var(--bf-max)); } }
@@ -555,10 +555,10 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       <p class="ldr idx"><a href="#ex-f"><span class="k">F</span>Structure-aware pretraining for legal retrieval</a><span class="lead"></span><span class="y">6</span></p>
       <p class="ldr idx"><a href="#ex-g"><span class="k">G</span>Shuffling subliminal sequences</a><span class="lead"></span><span class="y">7</span></p>
       <p class="ldr idx"><a href="#ex-h"><span class="k">H</span>Implicit bias in AI-generated discharge summaries</a><span class="lead"></span><span class="y">8</span></p>
-      <p class="ldr idx"><a href="#ex-i"><span class="k">I</span>Eviction notice defect tool</a><span class="lead"></span><span class="y">8</span></p>
-      <p class="ldr idx"><a href="#ex-j"><span class="k">J</span>MindMap, clustering student responses</a><span class="lead"></span><span class="y">9</span></p>
+      <p class="ldr idx"><a href="#ex-i"><span class="k">I</span>Eviction notice defect tool</a><span class="lead"></span><span class="y">9</span></p>
+      <p class="ldr idx"><a href="#ex-j"><span class="k">J</span>MindMap, clustering student responses</a><span class="lead"></span><span class="y">10</span></p>
       <h3 class="cat">Industry</h3>
-      <p class="ldr idx"><a href="#ex-k"><span class="k">K</span>Applied science, Graphika</a><span class="lead"></span><span class="y">10</span></p>
+      <p class="ldr idx"><a href="#ex-k"><span class="k">K</span>Applied science, Graphika</a><span class="lead"></span><span class="y">11</span></p>
     </div>
     <div class="foot"><span class="pg">- 1 -</span><span class="dt">Index of Exhibits</span></div>
   </article>
@@ -734,30 +734,52 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     <div class="foot"><span class="pg">- 7 -</span><span class="dt">Exhibits</span></div>
   </article>
 
-  <article class="sheet" aria-label="Exhibits H and I">
-    <span class="extab" aria-hidden="true">EXHIBIT H</span><span class="extab" aria-hidden="true">EXHIBIT I</span>
+  <article class="sheet" aria-label="Exhibit H">
+    <span class="extab" aria-hidden="true">EXHIBIT H</span>
     <div class="nums" aria-hidden="true"></div>
     <div class="lines">
       <section class="exh" id="ex-h" aria-labelledby="h-exh">
         <h2 class="h-brief u">EXHIBIT H</h2>
         <h3 class="t" id="h-exh">Implicit bias in AI-generated discharge summaries</h3>
         <p class="m">Stanford CS 329R final project, with Philip Baillargeon. <a class="xref" href="https://github.com/J0V1K/ehr-bias-analysis-329r" target="_blank" rel="noopener">Code ↗</a></p>
-        <p class="para">Do AI-generated discharge summaries carry the racial disparities in clinician-written ones? We compared word use by race in over 100,000 MIMIC-IV discharge instructions, then had GPT-3.5 rewrite 8,000 of them. In the originals, White patients are pointed to rehab, therapy, and follow-up care, while Black and Hispanic patients get dialysis and diabetes regimens with less explanation. The GPT summaries flatten the tone but keep the different kinds of care, and drop context like high blood pressure and insulin. Identical tone is not equitable treatment.</p>
+        <p class="para">Do AI-generated discharge summaries carry the racial disparities in clinician-written ones? We compared word use by race in over 100,000 MIMIC-IV discharge instructions, then had GPT-3.5 rewrite 8,000 of them. In the originals, White patients are pointed to rehab, therapy, and follow-up care, while Black and Hispanic patients get dialysis and diabetes regimens with less explanation. The GPT summaries flatten the tone but keep the different kinds of care, and drop details like insulin. Identical tone is not equitable treatment.</p>
         <figure class="figure butterfly" aria-label="Words most over-represented in discharge instructions for Black versus White patients, by z-score">
-          <div class="fig-head"><b>Fig. 3. Words that separate Black and White patients&rsquo; instructions</b></div>
+          <div class="fig-head"><b>Fig. 3. Words that separate Black and White patients&rsquo; discharge instructions</b></div>
           <div class="bf-head"><span>More common for Black patients</span><span>More common for White patients</span></div>
           <div class="bf">
             <div class="bf-l"><b>dialysis</b><span>40.1</span><i style="--v:40.1"></i></div><div class="bf-r"><i style="--v:14.3"></i><span>14.3</span><b>ostomy</b></div>
-            <div class="bf-l gone"><b>insulin</b><span>31.0</span><i style="--v:31.0"></i></div><div class="bf-r"><i style="--v:13.2"></i><span>13.2</span><b>drain</b></div>
+            <div class="bf-l"><b>insulin</b><span>31.0</span><i style="--v:31.0"></i></div><div class="bf-r"><i style="--v:13.2"></i><span>13.2</span><b>drain</b></div>
             <div class="bf-l"><b>sugars</b><span>24.4</span><i style="--v:24.4"></i></div><div class="bf-r"><i style="--v:13.2"></i><span>13.2</span><b>tube</b></div>
             <div class="bf-l"><b>asthma</b><span>23.0</span><i style="--v:23.0"></i></div><div class="bf-r"><i style="--v:12.7"></i><span>12.7</span><b>narcotic</b></div>
             <div class="bf-l"><b>diabetes</b><span>19.8</span><i style="--v:19.8"></i></div><div class="bf-r"><i style="--v:11.8"></i><span>11.8</span><b>output</b></div>
-            <div class="bf-l gone"><b>pressure</b><span>19.6</span><i style="--v:19.6"></i></div><div class="bf-r"><i style="--v:11.3"></i><span>11.3</span><b>relievers</b></div>
-            <div class="bf-l gone"><b>high</b><span>19.0</span><i style="--v:19.0"></i></div><div class="bf-r"><i style="--v:10.6"></i><span>10.6</span><b>dr</b></div>
+            <div class="bf-l"><b>pressure</b><span>19.6</span><i style="--v:19.6"></i></div><div class="bf-r"><i style="--v:11.3"></i><span>11.3</span><b>relievers</b></div>
+            <div class="bf-l"><b>high</b><span>19.0</span><i style="--v:19.0"></i></div><div class="bf-r"><i style="--v:10.6"></i><span>10.6</span><b>dr</b></div>
           </div>
-          <p class="fig-cap">Fightin&rsquo; Words z-scores. Hatched terms stop separating the groups in GPT-3.5 summaries.</p>
+          <p class="fig-cap">Fightin&rsquo; Words z-scores, clinician-written instructions (100,000+ records).</p>
+        </figure>
+        <figure class="figure butterfly" style="--bf-max: 10" aria-label="Words most over-represented in GPT-3.5 summaries for Black versus White patients, by z-score">
+          <div class="fig-head"><b>Fig. 4. The same comparison on GPT-3.5 summaries</b></div>
+          <div class="bf-head"><span>More common for Black patients</span><span>More common for White patients</span></div>
+          <div class="bf">
+            <div class="bf-l"><b>asthma</b><span>8.8</span><i style="--v:8.8"></i></div><div class="bf-r"><i style="--v:4.4"></i><span>4.4</span><b>tube</b></div>
+            <div class="bf-l"><b>esrd</b><span>7.5</span><i style="--v:7.5"></i></div><div class="bf-r"><i style="--v:4.1"></i><span>4.1</span><b>afib</b></div>
+            <div class="bf-l"><b>pregnancy</b><span>6.6</span><i style="--v:6.6"></i></div><div class="bf-r"><i style="--v:4.1"></i><span>4.1</span><b>cirrhosis</b></div>
+            <div class="bf-l"><b>hypertension</b><span>6.5</span><i style="--v:6.5"></i></div><div class="bf-r"><i style="--v:4.1"></i><span>4.1</span><b>fracture</b></div>
+            <div class="bf-l"><b>diabetes</b><span>6.1</span><i style="--v:6.1"></i></div><div class="bf-r"><i style="--v:4.0"></i><span>4.0</span><b>cellulitis</b></div>
+            <div class="bf-l"><b>dialysis</b><span>5.6</span><i style="--v:5.6"></i></div><div class="bf-r"><i style="--v:3.9"></i><span>3.9</span><b>liver</b></div>
+            <div class="bf-l"><b>bipap</b><span>5.2</span><i style="--v:5.2"></i></div><div class="bf-r"><i style="--v:3.9"></i><span>3.9</span><b>cad</b></div>
+          </div>
+          <p class="fig-cap">8,000 summaries, so z-scores run smaller; note the new scale. Values are read from the paper&rsquo;s plot. Diagnoses like dialysis and diabetes remain; insulin no longer appears.</p>
         </figure>
       </section>
+    </div>
+    <div class="foot"><span class="pg">- 8 -</span><span class="dt">Exhibits</span></div>
+  </article>
+
+  <article class="sheet" aria-label="Exhibit I">
+    <span class="extab" aria-hidden="true">EXHIBIT I</span>
+    <div class="nums" aria-hidden="true"></div>
+    <div class="lines">
       <section class="exh" id="ex-i" aria-labelledby="h-exi">
         <h2 class="h-brief u">EXHIBIT I</h2>
         <h3 class="t" id="h-exi">Eviction notice defect tool</h3>
@@ -765,7 +787,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         <p class="para">A tool that flags potential defects in eviction notices, guides client interviews, and drafts filings, with human review at each step. I built the defense taxonomy with attorneys and revised the tool from legal aid feedback.</p>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 8 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 9 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibit J">
@@ -788,7 +810,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         </div>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 9 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 10 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibit K">
@@ -802,7 +824,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         <p class="para">Built embedding and retrieval pipelines over 1.38M social media posts, and evaluation infrastructure for multilingual retrieval and frontier language models in analyst workflows.</p>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 10 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 11 -</span><span class="dt">Exhibits</span></div>
   </article>
 
 </div>
