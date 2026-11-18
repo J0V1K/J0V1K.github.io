@@ -29,7 +29,8 @@
   --dark-line: #252c36;
   --law: #ec8ea0;
   --cs: #7cc6ea;
-  --both: #e9d27a;
+  --lang: #e9d27a;
+  --other: #b8a6e8;
   --font-legal: "Tinos", "Times New Roman", Times, serif;
   --font-sans: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
@@ -263,7 +264,8 @@ input[type=range] { width: 100%; accent-color: var(--red); }
 .kw { transition: color .5s; }
 .kw.lit[data-k="law"] { color: var(--law); }
 .kw.lit[data-k="cs"] { color: var(--cs); }
-.kw.lit[data-k="both"] { color: var(--both); }
+.kw.lit[data-k="lang"] { color: var(--lang); }
+.kw.lit[data-k="other"] { color: var(--other); }
 #wg { position: absolute; left: 0; width: 100%; top: 0; height: 100%; display: block; pointer-events: none; touch-action: pan-y; }
 #wg.over { cursor: pointer; }
 #wg.dragging { cursor: grabbing; }
@@ -399,15 +401,15 @@ input[type=range] { width: 100%; accent-color: var(--red); }
             <div></div>
             <div class="t">OPENING BRIEF</div>
             <div></div>
-            <div>M.S., <span class="kw" data-node="computer science">Computer Science</span> (AI)</div>
-            <div>B.A., <span class="kw" data-node="linguistics">Linguistics</span></div>
+            <div>M.S., Computer Science (AI)</div>
+            <div>B.A., <span class="kw" data-node="language">Linguistics</span></div>
             <div>Stanford University</div>
           </div>
         </div>
         <div class="blank"></div>
         <h2 class="h-brief">I. INTRODUCTION</h2>
-        <p class="para lede">I study how <span class="kw" data-node="AI text">AI</span> is entering <span class="kw" data-node="legal institutions">legal institutions</span> and how to improve the development of legal technology.</p>
-        <p class="para">I'm motivated by the belief that technology can help us improve access to justice, but critical work is desperately needed to ensure the responsible and safe use of digital systems. I collaborate with the talented researchers at the Stanford <span class="kw" data-node="regulation">Regulation</span>, <span class="kw" data-node="evaluation">Evaluation</span>, and <span class="kw" data-node="AI governance">Governance</span> Lab (RegLab). My interests include <span class="kw" data-node="empirical legal studies">empirical legal studies</span>, AI in <span class="kw" data-node="state courts">courts</span> and legal institutions, <span class="kw" data-node="legal NLP">legal NLP</span> <span class="kw" data-node="evaluation">evaluation</span>, <span class="kw" data-node="institutional capacity">institutional capacity</span> for <span class="kw" data-node="AI governance">AI governance</span>, and technical <span class="kw" data-node="AI safety">AI safety</span>.</p>
+        <p class="para lede">I study how AI is entering legal institutions and how to improve the development of legal technology.</p>
+        <p class="para">I'm motivated by the belief that technology can help us improve <span class="kw" data-node="access to justice">access to justice</span>, but critical work is desperately needed to ensure the responsible and safe use of digital systems. I collaborate with the talented researchers at the Stanford Regulation, Evaluation, and Governance Lab (RegLab). My interests include empirical legal studies, AI in <span class="kw" data-node="courts">courts</span> and legal institutions, legal NLP <span class="kw" data-node="evaluation">evaluation</span>, <span class="kw" data-node="institutional capacity">institutional capacity</span> for <span class="kw" data-node="AI governance">AI governance</span>, and technical <span class="kw" data-node="AI safety">AI safety</span>.</p>
       </div>
       <div class="foot"><span class="pg">- 1 -</span><span class="dt">Opening Brief</span></div>
     </article>
@@ -430,7 +432,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       <div class="in">
         <div class="r1">
           <span class="prompt"><b>javokhir@stanford</b>:~$ <span class="cmd">python3 word_graph.py index.html --layout force</span></span>
-          <span class="glegend"><span><i class="box"></i>work</span><span><i style="background:var(--law)"></i>law</span><span><i style="background:var(--cs)"></i>computing</span><span><i style="background:var(--both)"></i>both</span></span>
+          <span class="glegend"><span><i class="box"></i>work</span><span><i style="background:var(--law)"></i>law</span><span><i style="background:var(--cs)"></i>computing</span><span><i style="background:var(--lang)"></i>language</span><span><i style="background:var(--other)"></i>other</span></span>
         </div>
         <div class="ginfo" id="ginfo" aria-live="polite"></div>
         <footer class="endfoot"><span>&copy; 2026 Javokhir Arifov. All rights reserved.</span></footer>
@@ -943,26 +945,27 @@ input[type=range] { width: 100%; accent-color: var(--red); }
 
   /* ---------- Graph data: works (boxed) linked to their keywords ---------- */
   const works = [
-    { label: 'Opening Brief', name: "Opening Brief, page 1", links: [['Page 1', '#brief']], w: ['computer science', 'linguistics', 'legal institutions', 'regulation', 'evaluation', 'AI governance', 'AI text', 'empirical legal studies', 'state courts', 'legal NLP', 'institutional capacity', 'AI safety'] },
-    { label: 'Detection Objection', name: 'Detection Objection: AI text in U.S. state courts (Ex. A)', links: [['Ex. A', '#ex-a'], ['Publication', '#toa-a']], w: ['AI text', 'state courts', 'civil filings', 'detection', 'calibration', 'prevalence', 'ScoreMix', 'PhantomDocket', 'evaluation'] },
-    { label: 'Legal Retrieval Benchmark', name: 'A Reasoning-Focused Legal Retrieval Benchmark and Housing Statute QA (Ex. B)', links: [['Ex. B', '#ex-b'], ['Publication', '#toa-b'], ['Paper', 'https://doi.org/10.1145/3709025.3712219']], w: ['legal retrieval', 'benchmarks', 'reasoning', 'bar exam', 'housing law', 'LLMs', 'evaluation', 'legal NLP', 'datasets', 'state statutes'] },
-    { label: 'Eviction Defense Tool', name: 'Eviction notice defect tool (Ex. I)', links: [['Ex. I', '#ex-i'], ['Class report', 'https://justiceinnovation.law.stanford.edu/ai-for-legal-help-2026-class-report-scoping-building-and-testing-new-legal-aid-tech-systems/']], w: ['eviction defense', 'legal aid', 'housing law', 'human review'] },
-    { label: 'ECHR Guide Versions', name: 'How legal guidance changes over time (Ex. C)', links: [['Ex. C', '#ex-c']], w: ['case law', 'ECHR', 'datasets', 'citations', 'versioning'] },
-    { label: 'Graphika Retrieval', name: 'Applied science at Graphika (Ex. K)', links: [['Ex. K', '#ex-k']], w: ['embeddings', 'retrieval', 'multilingual', 'LLMs', 'evaluation'] },
-    { label: 'Subliminal Shuffling', name: 'Shuffling subliminal sequences, CS 221M (Ex. G)', links: [['Ex. G', '#ex-g'], ['Code', 'https://github.com/J0V1K/mechinterp-project']], w: ['interpretability', 'subliminal learning', 'token entanglement', 'fine-tuning', 'LLMs', 'AI safety'] },
-    { label: 'EHR Bias Audit', name: 'Implicit bias in AI-generated discharge summaries (Ex. H)', links: [['Ex. H', '#ex-h'], ['Code', 'https://github.com/J0V1K/ehr-bias-analysis-329r']], w: ['clinical notes', 'racial disparities', 'embeddings', 'sentiment', 'LLMs', 'evaluation'] },
-    { label: 'Xaliwar', name: 'Xaliwar, a constructed language (Ex. E)', links: [['Ex. E', '#ex-e']], w: ['linguistics', 'morphology', 'phonology', 'case marking', 'evidentiality'] },
-    { label: 'Cite-Graph Pretraining', name: 'Citation-graph pretraining for legal reasoning, CS 422 (Ex. F)', links: [['Ex. F', '#ex-f']], w: ['pretraining', 'citations', 'state statutes', 'legal NLP', 'null results'] },
-    { label: 'MindMap', name: 'MindMap: clustering student responses, CS 293 (Ex. J)', links: [['Ex. J', '#ex-j']], w: ['CS education', 'clustering', 'LLMs', 'embeddings', 'evaluation', 'teaching'] },
-    { label: 'Capacity Before Control', name: 'Capacity Before Control (Machina, Issue 3)', links: [['Read', 'https://online.fliphtml5.com/symsyssociety/Machina_issue3/'], ['Publication', '#toa-d']], w: ['AI governance', 'institutional capacity', 'policy', 'regulation'] },
-    { label: 'Infinite Story', name: 'Infinite Story, generative AI in CS education (Ex. D)', links: [['Ex. D', '#ex-d'], ['Nifty', 'https://nifty.stanford.edu/2025/piech-infinite-story/'], ['CS 106A', 'https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1258/assignments/4-infinitestory/'], ['Publication', '#toa-c']], w: ['CS education', 'assignments', 'LLMs', 'AI ethics'] },
-    { label: 'Man or Machine?', name: 'SLE 99: Man or Machine? (student-led seminar)', links: [['Syllabus', '#sle-99'], ['Service', '#teaching']], w: ['philosophy of AI', 'LLM consciousness', 'AI ethics', 'teaching'] },
-    { label: 'Teaching', name: 'Teaching record', links: [['Service', '#teaching'], ['Section notes', '#section-notes']], w: ['CS education', 'teaching', 'CS 106A', 'CS 109'] },
-    { label: 'Reviewing', name: 'Fellowships and reviewing', links: [['Service', '#fellowships']], w: ['legal NLP', 'CS education', 'case law', 'AI governance'] }
+    { label: 'Opening Brief', name: "Opening Brief, page 1", links: [['Page 1', '#brief']], w: ['courts', 'language', 'evaluation', 'AI governance', 'AI safety', 'access to justice', 'institutional capacity'] },
+    { label: 'Detection Objection', name: 'Detection Objection: AI text in U.S. state courts (Ex. A)', links: [['Ex. A', '#ex-a'], ['Publication', '#toa-a']], w: ['courts', 'detection', 'evaluation', 'institutional capacity'] },
+    { label: 'Legal Retrieval Benchmark', name: 'A Reasoning-Focused Legal Retrieval Benchmark and Housing Statute QA (Ex. B)', links: [['Ex. B', '#ex-b'], ['Publication', '#toa-b'], ['Paper', 'https://doi.org/10.1145/3709025.3712219']], w: ['legal research', 'housing law', 'retrieval', 'benchmarks', 'evaluation', 'access to justice'] },
+    { label: 'Eviction Defense Tool', name: 'Eviction notice defect tool (Ex. I)', links: [['Ex. I', '#ex-i'], ['Class report', 'https://justiceinnovation.law.stanford.edu/ai-for-legal-help-2026-class-report-scoping-building-and-testing-new-legal-aid-tech-systems/']], w: ['housing law', 'courts', 'human review', 'access to justice'] },
+    { label: 'ECHR Guide Versions', name: 'How legal guidance changes over time (Ex. C)', links: [['Ex. C', '#ex-c']], w: ['legal research', 'datasets'] },
+    { label: 'Graphika Retrieval', name: 'Applied science at Graphika (Ex. K)', links: [['Ex. K', '#ex-k']], w: ['language', 'retrieval', 'embeddings', 'evaluation'] },
+    { label: 'Subliminal Shuffling', name: 'Shuffling subliminal sequences, CS 221M (Ex. G)', links: [['Ex. G', '#ex-g'], ['Code', 'https://github.com/J0V1K/mechinterp-project']], w: ['interpretability', 'training', 'AI safety'] },
+    { label: 'EHR Bias Audit', name: 'Implicit bias in AI-generated discharge summaries (Ex. H)', links: [['Ex. H', '#ex-h'], ['Code', 'https://github.com/J0V1K/ehr-bias-analysis-329r']], w: ['health care', 'embeddings', 'evaluation', 'bias'] },
+    { label: 'Xaliwar', name: 'Xaliwar, a constructed language (Ex. E)', links: [['Ex. E', '#ex-e']], w: ['language', 'grammar design'] },
+    { label: 'Cite-Graph Pretraining', name: 'Citation-graph pretraining for legal reasoning, CS 422 (Ex. F)', links: [['Ex. F', '#ex-f']], w: ['legal research', 'training', 'retrieval'] },
+    { label: 'MindMap', name: 'MindMap: clustering student responses, CS 293 (Ex. J)', links: [['Ex. J', '#ex-j']], w: ['education', 'clustering', 'embeddings', 'evaluation'] },
+    { label: 'Capacity Before Control', name: 'Capacity Before Control (Machina, Issue 3)', links: [['Read', 'https://online.fliphtml5.com/symsyssociety/Machina_issue3/'], ['Publication', '#toa-d']], w: ['AI governance', 'institutional capacity'] },
+    { label: 'Infinite Story', name: 'Infinite Story, generative AI in CS education (Ex. D)', links: [['Ex. D', '#ex-d'], ['Nifty', 'https://nifty.stanford.edu/2025/piech-infinite-story/'], ['CS 106A', 'https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1258/assignments/4-infinitestory/'], ['Publication', '#toa-c']], w: ['education', 'AI ethics'] },
+    { label: 'Man or Machine?', name: 'SLE 99: Man or Machine? (student-led seminar)', links: [['Syllabus', '#sle-99'], ['Service', '#teaching']], w: ['education', 'machine minds', 'AI ethics'] },
+    { label: 'Teaching', name: 'Teaching record', links: [['Service', '#teaching'], ['Section notes', '#section-notes']], w: ['education'] },
+    { label: 'Reviewing', name: 'Fellowships and reviewing', links: [['Service', '#fellowships']], w: ['legal research', 'education', 'AI governance'] }
   ];
-  const LAW = ['state courts', 'civil filings', 'housing law', 'eviction defense', 'legal aid', 'case law', 'ECHR', 'bar exam', 'empirical legal studies', 'AI governance', 'institutional capacity', 'citations', 'policy', 'state statutes', 'legal institutions', 'regulation'];
-  const BOTH = ['legal retrieval', 'legal NLP', 'PhantomDocket', 'AI text', 'human review', 'linguistics', 'racial disparities', 'morphology', 'phonology', 'case marking', 'evidentiality', 'philosophy of AI', 'AI ethics', 'LLM consciousness'];
-  const kindOf = w => LAW.includes(w) ? 'law' : BOTH.includes(w) ? 'both' : 'cs';
+  const LAW = ['courts', 'legal research', 'housing law', 'access to justice', 'AI governance', 'institutional capacity'];
+  const LANG = ['language', 'grammar design'];
+  const OTHER = ['health care', 'education', 'human review', 'bias', 'AI ethics', 'machine minds'];
+  const kindOf = w => LAW.includes(w) ? 'law' : LANG.includes(w) ? 'lang' : OTHER.includes(w) ? 'other' : 'cs';
   const nodes = [], idx = {}, edges = [];
   works.forEach(wk => { wk.node = nodes.length; nodes.push({ w: wk.label, k: 'work', c: 3, work: wk }); });
   works.forEach(wk => wk.w.forEach(w => {
@@ -996,7 +999,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
       const p = nodes[i], q = nodes[j]; let dx = q.x - p.x, dy = q.y - p.y, d2 = dx * dx + dy * dy;
       if (d2 < 1) { dx = rnd() - .5; dy = rnd() - .5; d2 = 1; }
-      const d = Math.sqrt(d2), f = (GW < 600 ? 1300 : 4200 * hs * hs) * alpha / d2;
+      const d = Math.sqrt(d2), f = (GW < 600 ? 2400 : 4200 * hs * hs) * alpha / d2;
       p.vx -= f * dx / d; p.vy -= f * dy / d; q.vx += f * dx / d; q.vy += f * dy / d;
     }
     edges.forEach(e => {
@@ -1022,7 +1025,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     });
   }
   function drawGraph() {
-    const C = { law: cssv(wg, '--law'), cs: cssv(wg, '--cs'), both: cssv(wg, '--both'), work: cssv(wg, '--dark-ink'), dim: '#3a4350', bg: cssv(wg, '--dark') };
+    const C = { law: cssv(wg, '--law'), cs: cssv(wg, '--cs'), lang: cssv(wg, '--lang'), other: cssv(wg, '--other'), work: cssv(wg, '--dark-ink'), dim: '#3a4350', bg: cssv(wg, '--dark') };
     g.clearRect(0, 0, GW, GH);
     if (ea <= 0 && la <= 0) return;
     const act = P >= .97 ? (sel >= 0 ? sel : hover >= 0 ? hover : drag) : -1;
@@ -1110,7 +1113,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       return;
     }
     const ents = n.in.map(wk => `<span class="ent">${esc(wk.label)}${wk.links.map(linkHtml).join('')}</span>`).join('');
-    info.innerHTML = `<b style="color:var(--${n.k})">${esc(n.w)}</b> · ${n.k === 'cs' ? 'computing' : n.k} · ${sel >= 0 ? 'pinned' : 'click to pin'}<div class="ents">${ents}</div>`;
+    info.innerHTML = `<b style="color:var(--${n.k})">${esc(n.w)}</b> · ${({ cs: 'computing', lang: 'language' })[n.k] || n.k} · ${sel >= 0 ? 'pinned' : 'click to pin'}<div class="ents">${ents}</div>`;
   }
   let down = null;
   wg.addEventListener('pointermove', ev => {
