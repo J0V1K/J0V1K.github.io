@@ -217,9 +217,10 @@ input[type=range] { width: 100%; accent-color: var(--red); }
 
 /* Declaration */
 .decl ol.np { list-style: none; counter-reset: np; }
-.decl ol.np > li { counter-increment: np; text-indent: .5in; }
-.decl ol.np > li::before { content: counter(np) ".\00a0\00a0"; }
-.decl .rows { list-style: none; padding-left: .5in; }
+/* Outline: numbers hang at .5in, everything a paragraph owns (wrapped lines, its list) aligns at 1in */
+.decl ol.np > li { counter-increment: np; position: relative; padding-left: 1in; text-indent: 0; }
+.decl ol.np > li::before { content: counter(np) "."; position: absolute; left: .5in; }
+.decl .rows { list-style: none; padding-left: 0; }
 .decl .rows li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; text-indent: 0; }
 .decl .rows .when { font-variant-numeric: tabular-nums; }
 .sig { display: grid; grid-template-columns: 1fr 1fr; }
@@ -320,7 +321,8 @@ input[type=range] { width: 100%; accent-color: var(--red); }
   .clip-photo .ph small { display: none; }
   .extab { display: none; }
   .filebar { padding-inline: 16px; }
-  .decl .rows { padding-left: 0; }
+  .decl ol.np > li { padding-left: .55in; }
+  .decl ol.np > li::before { left: .2in; }
   .decl .rows .when { font-size: 13px; }
   .index li a { grid-template-columns: minmax(0, 1fr) auto; }
   .index .d { grid-column: 1 / -1; grid-row: 2; }
