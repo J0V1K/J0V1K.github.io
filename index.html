@@ -556,8 +556,15 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       <section class="exh" id="ex-b" aria-labelledby="h-exb">
         <h2 class="h-brief u">EXHIBIT B</h2>
         <h3 class="t" id="h-exb">Legal retrieval benchmarks</h3>
-        <p class="m">Stanford RegLab, 2023 to 2024.</p>
-        <p class="para">I evaluated language models on legal retrieval tasks covering housing law and the bar exam. I built the <code>Housing Statute QA</code> dataset from all fifty state housing codes, a retrieval pool of about two million passages.</p>
+        <p class="m">Stanford RegLab, 2023 to 2024. ACM CS&amp;Law 2025. <a class="xref" href="https://arxiv.org/abs/2505.03970" target="_blank" rel="noopener">Paper ↗</a></p>
+        <p class="para">Legal research is a retrieval problem that takes reasoning. We released two benchmarks: Bar Exam QA, about 3,000 questions over 900,000 passages, and Housing Statute QA, 6,853 questions over two million statutes from 50+ jurisdictions, which I built from state housing codes. Standard retrievers struggle. A dense retriever that finds 69% of gold passages on general questions finds 7% on bar exam questions. Expanding the query with structured legal reasoning more than doubles that.</p>
+        <ul class="finds" aria-label="Share of gold passages in the top 10 results, E5-large-v2">
+          <li><span>Natural Questions</span><b>69%</b></li>
+          <li><span>Housing Statute QA</span><b>24&ndash;51%</b></li>
+          <li><span>Bar Exam QA</span><b>7%</b></li>
+          <li><span>Bar Exam QA, with reasoning</span><b>16%</b></li>
+        </ul>
+        <p class="fig-cap">Share of gold passages in the top 10 results (Recall@10, E5-large-v2). Housing Statute QA shows lower and upper bounds.</p>
       </section>
       <section class="exh" id="ex-c" aria-labelledby="h-exc">
         <h2 class="h-brief u">EXHIBIT C</h2>
