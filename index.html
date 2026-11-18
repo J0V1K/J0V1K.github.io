@@ -225,6 +225,11 @@ input[type=range] { width: 100%; accent-color: var(--red); }
 .cl-word span, .cl-gloss span { border-bottom: 2px solid var(--c, transparent); padding-bottom: 1px; }
 .cl-gloss { font: 12.5px var(--font-mono); color: var(--f-dim); letter-spacing: .02em; }
 .cl-tr { font: 15px var(--font-legal); color: var(--f-ink); }
+.figure.conlang + .figure.conlang { margin-top: 12px; }
+.cs-line { display: flex; flex-wrap: wrap; gap: 6px 22px; }
+.cs-w { display: grid; gap: 1px; }
+.cs-w .cl-word { font-size: 22px; }
+.cs-role { font: 10px var(--font-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--f-dim); }
 
 /* MindMap demo */
 .mm-groups { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
@@ -620,6 +625,19 @@ input[type=range] { width: 100%; accent-color: var(--red); }
             <div class="cl-tr" id="cl-tr"></div>
           </div>
         </div>
+        <div class="figure conlang">
+          <div class="fig-head"><b>Build a Xaliwar sentence</b></div>
+          <div class="cl-ctl">
+            <label for="cs-subj">Who eats<select id="cs-subj"></select></label>
+            <label for="cs-pos">Whose food<select id="cs-pos"></select></label>
+            <label for="cs-obj">Food<select id="cs-obj"></select></label>
+            <label for="cs-tam">Tense or mood<select id="cs-tam"></select></label>
+          </div>
+          <div class="cl-out" aria-live="polite">
+            <div class="cs-line" id="cs-line"></div>
+            <div class="cl-tr" id="cs-tr"></div>
+          </div>
+        </div>
       </section>
     </div>
     <div class="foot"><span class="pg">- 5 -</span><span class="dt">Exhibits</span></div>
@@ -949,6 +967,39 @@ input[type=range] { width: 100%; accent-color: var(--red); }
   }
   [clR, clN, clP, clC].forEach(el => el.addEventListener('change', buildCL));
   buildCL();
+
+  /* ---------- Xaliwar sentence builder (Ex. E). Word order S-(possessor)-O-V and the verb ʒrap "eat" stay fixed. ---------- */
+  const CS = {
+    subj: [['joʃ', 'kid', 'the kid', 'his/her'], ['ʃɔxi', 'younger sister', 'the younger sister', 'her']],
+    pos: [['tʃa', 'POSS.3SG.OBV', null, 'the other’s'], ['ja', 'POSS.3SG', 'own', 'his/her own'], ['jom', 'POSS.1SG', 'my', 'my'], ['jim', 'POSS.1PL', 'our', 'our'], ['joʒ', 'POSS.2SG', 'your', 'your']],
+    obj: [['adʒanai', 'honey'], ['meβ', 'berry']],
+    tam: [['ag', 'PRFPST', 'ate', 'perfect past'], ['axam', 'INFR.PST', 'apparently ate', 'inferential past'], ['a', 'PRS', 'eats', 'present'], ['ata', 'PRSPROG', 'is eating', 'present progressive'], ['aja', 'FUT', 'will eat', 'future'], ['agjam', 'PSTNECC', 'should have eaten', 'past necessitative'], ['agam', 'HAB.PST', 'used to eat', 'habitual past']]
+  };
+  const COL = { PL: '#1d6a99', POSS: '#9e2b42', CASE: '#b8860b', OBV: '#6b4fa0', TAM: '#3f7d4a', PERS: '#8a8f98' };
+  const csS = document.getElementById('cs-subj'), csP = document.getElementById('cs-pos'), csO = document.getElementById('cs-obj'), csT = document.getElementById('cs-tam');
+  CS.subj.forEach(([w, g], i) => csS.add(new Option(`${w} · ${g}`, i)));
+  CS.pos.forEach(([sf, , , l], i) => csP.add(new Option(`-${sf} · ${l}`, i)));
+  CS.obj.forEach(([w, g], i) => csO.add(new Option(`${w} · ${g}`, i)));
+  CS.tam.forEach(([sf, , , l], i) => csT.add(new Option(`-${sf} · ${l}`, i)));
+  /* Obviative -n; after a consonant, a copy of the word's last vowel is inserted first (joʃ → joʃ-on). */
+  const VOW = 'aeiouɔæ';
+  const obv = w => VOW.includes(w.slice(-1)) ? 'n' : [...w].reverse().find(c => VOW.includes(c)) + 'n';
+  function buildCS() {
+    const si = +csS.value, [sw, sg, se, sown] = CS.subj[si], [ow, og, oe] = CS.subj[1 - si];
+    const [ps, pg, pk, ] = CS.pos[csP.value], [fw, fg] = CS.obj[csO.value], [ts, tg, te] = CS.tam[csT.value];
+    const words = [['subject', [[sw, sg]]]];
+    if (pk === null) words.push(['possessor', [[ow, og], [obv(ow), 'OBV', COL.OBV]]]);
+    words.push(['object', [[fw, fg], [ps, pg, COL.POSS], ['lin', 'ACC', COL.CASE]]]);
+    words.push(['verb', [['ʒrap', 'eat'], [ts, tg, COL.TAM], ['be', '3SG', COL.PERS]]]);
+    const seg = (parts, k) => parts.map((pt, i) => `<span style="--c:${i ? pt[2] : 'transparent'}">${pt[k]}</span>`).join('-');
+    document.getElementById('cs-line').innerHTML = words.map(([role, parts]) =>
+      `<div class="cs-w"><span class="cs-role">${role}</span><span class="cl-word">${seg(parts, 0)}</span><span class="cl-gloss">${seg(parts, 1)}</span></div>`).join('');
+    const whose = pk === null ? `${oe}’s` : pk === 'own' ? sown : pk;
+    const en = `${se} ${te} ${whose} ${fg}.`;
+    document.getElementById('cs-tr').textContent = '“' + en[0].toUpperCase() + en.slice(1) + '”';
+  }
+  [csS, csP, csO, csT].forEach(el => el.addEventListener('change', buildCS));
+  buildCS();
 
 
   /* ---------- MindMap toy (Ex. J) ---------- */
