@@ -214,6 +214,7 @@ figure.figure { margin-inline: 0; }
 .shot a { display: block; border: 1px solid #ddd; line-height: 0; }
 .shot img { width: 100%; height: auto; display: block; }
 .shot figcaption { text-align: center; }
+.shot.narrow a { max-width: 440px; margin-inline: auto; }
 .sketches { margin-top: var(--lh); display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .sketches a { display: block; border: 1px solid #ddd; line-height: 0; }
 .sketches img { width: 100%; height: auto; display: block; }
@@ -785,6 +786,10 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         <h3 class="t" id="h-exi">Eviction notice defect tool</h3>
         <p class="m">AI for Legal Help, Stanford Legal Design Lab, with San Diego housing attorneys. <a class="xref" href="https://justiceinnovation.law.stanford.edu/ai-for-legal-help-2026-class-report-scoping-building-and-testing-new-legal-aid-tech-systems/" target="_blank" rel="noopener">Class report ↗</a></p>
         <p class="para">A tool that flags potential defects in eviction notices, guides client interviews, and drafts filings, with human review at each step. I built the defense taxonomy with attorneys and revised the tool from legal aid feedback.</p>
+        <figure class="shot narrow">
+          <a href="images/eviction-tool.jpg" target="_blank" rel="noopener"><img src="images/eviction-tool.jpg" alt="The tool reviewing a sample 3-day notice to pay. Highlights mark the notice's parts, and a banner flags that the required pay-or-quit phrasing is missing." loading="lazy" width="900" height="1040"></a>
+          <figcaption class="fig-cap">The tool reviewing a sample 3-day notice. It flags the missing pay-or-quit language.</figcaption>
+        </figure>
       </section>
     </div>
     <div class="foot"><span class="pg">- 9 -</span><span class="dt">Exhibits</span></div>
