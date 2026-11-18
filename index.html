@@ -650,8 +650,8 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       <section class="exh" id="ex-f" aria-labelledby="h-exf">
         <h2 class="h-brief u">EXHIBIT F</h2>
         <h3 class="t" id="h-exf">Citation-graph pretraining for legal reasoning</h3>
-        <p class="m">CS 422 research project, with Stanford RegLab.</p>
-        <p class="para">Does ordering pretraining documents by their citation graph teach a model the structure of legal text? I built a pipeline that extracts cross-references from California statutes, builds the citation graph, and packs documents four ways for masked-language-model pretraining: random, citation-only, hierarchy, and cite-graph. All four performed about the same on a citation-edge ranking probe. The diagnostics explain why: citation edges are sparse next to chapter structure, and most cross-references point to nearby sections that simpler packing already keeps together.</p>
+        <p class="m">CS 422 research project, with Joshua Rizo.</p>
+        <p class="para"><a href="https://arxiv.org/abs/2310.10638" target="_blank" rel="noopener">In-Context Pretraining</a> (Shi et al., 2024) packs related documents into the same training context instead of random ones, and models trained this way reason better across documents. I extracted cross-references from California statutes, built a citation graph, and packed documents four ways for masked-language-model pretraining: random, citation-only, hierarchy, and cite-graph. All four performed about the same on a citation-edge ranking probe. Citation edges were too sparse next to chapter structure, and most cross-references point to nearby sections that simpler packing already keeps together.</p>
       </section>
       <section class="exh" id="ex-g" aria-labelledby="h-exg">
         <h2 class="h-brief u">EXHIBIT G</h2>
