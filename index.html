@@ -402,7 +402,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
             <div class="t">OPENING BRIEF</div>
             <div></div>
             <div>M.S., Computer Science (AI)</div>
-            <div>B.A., <span class="kw" data-node="language">Linguistics</span></div>
+            <div>B.A., <span class="kw" data-node="linguistics">Linguistics</span></div>
             <div>Stanford University</div>
           </div>
         </div>
@@ -945,26 +945,26 @@ input[type=range] { width: 100%; accent-color: var(--red); }
 
   /* ---------- Graph data: works (boxed) linked to their keywords ---------- */
   const works = [
-    { label: 'Opening Brief', name: "Opening Brief, page 1", links: [['Page 1', '#brief']], w: ['courts', 'language', 'evaluation', 'AI governance', 'AI safety', 'access to justice', 'institutional capacity'] },
-    { label: 'Detection Objection', name: 'Detection Objection: AI text in U.S. state courts (Ex. A)', links: [['Ex. A', '#ex-a'], ['Publication', '#toa-a']], w: ['courts', 'detection', 'evaluation', 'institutional capacity'] },
-    { label: 'Legal Retrieval Benchmark', name: 'A Reasoning-Focused Legal Retrieval Benchmark and Housing Statute QA (Ex. B)', links: [['Ex. B', '#ex-b'], ['Publication', '#toa-b'], ['Paper', 'https://doi.org/10.1145/3709025.3712219']], w: ['legal research', 'housing law', 'retrieval', 'benchmarks', 'evaluation', 'access to justice'] },
-    { label: 'Eviction Defense Tool', name: 'Eviction notice defect tool (Ex. I)', links: [['Ex. I', '#ex-i'], ['Class report', 'https://justiceinnovation.law.stanford.edu/ai-for-legal-help-2026-class-report-scoping-building-and-testing-new-legal-aid-tech-systems/']], w: ['housing law', 'courts', 'human review', 'access to justice'] },
-    { label: 'ECHR Guide Versions', name: 'How legal guidance changes over time (Ex. C)', links: [['Ex. C', '#ex-c']], w: ['legal research', 'datasets'] },
-    { label: 'Graphika Retrieval', name: 'Applied science at Graphika (Ex. K)', links: [['Ex. K', '#ex-k']], w: ['language', 'retrieval', 'embeddings', 'evaluation'] },
-    { label: 'Subliminal Shuffling', name: 'Shuffling subliminal sequences, CS 221M (Ex. G)', links: [['Ex. G', '#ex-g'], ['Code', 'https://github.com/J0V1K/mechinterp-project']], w: ['interpretability', 'training', 'AI safety'] },
-    { label: 'EHR Bias Audit', name: 'Implicit bias in AI-generated discharge summaries (Ex. H)', links: [['Ex. H', '#ex-h'], ['Code', 'https://github.com/J0V1K/ehr-bias-analysis-329r']], w: ['health care', 'embeddings', 'evaluation', 'bias'] },
-    { label: 'Xaliwar', name: 'Xaliwar, a constructed language (Ex. E)', links: [['Ex. E', '#ex-e']], w: ['language', 'grammar design'] },
-    { label: 'Cite-Graph Pretraining', name: 'Citation-graph pretraining for legal reasoning, CS 422 (Ex. F)', links: [['Ex. F', '#ex-f']], w: ['legal research', 'training', 'retrieval'] },
-    { label: 'MindMap', name: 'MindMap: clustering student responses, CS 293 (Ex. J)', links: [['Ex. J', '#ex-j']], w: ['education', 'clustering', 'embeddings', 'evaluation'] },
-    { label: 'Capacity Before Control', name: 'Capacity Before Control (Machina, Issue 3)', links: [['Read', 'https://online.fliphtml5.com/symsyssociety/Machina_issue3/'], ['Publication', '#toa-d']], w: ['AI governance', 'institutional capacity'] },
-    { label: 'Infinite Story', name: 'Infinite Story, generative AI in CS education (Ex. D)', links: [['Ex. D', '#ex-d'], ['Nifty', 'https://nifty.stanford.edu/2025/piech-infinite-story/'], ['CS 106A', 'https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1258/assignments/4-infinitestory/'], ['Publication', '#toa-c']], w: ['education', 'AI ethics'] },
-    { label: 'Man or Machine?', name: 'SLE 99: Man or Machine? (student-led seminar)', links: [['Syllabus', '#sle-99'], ['Service', '#teaching']], w: ['education', 'machine minds', 'AI ethics'] },
-    { label: 'Teaching', name: 'Teaching record', links: [['Service', '#teaching'], ['Section notes', '#section-notes']], w: ['education'] },
+    { label: 'Opening Brief', name: "Opening Brief, page 1", links: [['Page 1', '#brief']], w: ['courts', 'linguistics', 'evaluation', 'generative AI', 'AI governance', 'AI safety', 'access to justice', 'institutional capacity'] },
+    { label: 'Detection Objection', name: 'Detection Objection: AI text in U.S. state courts (Ex. A)', links: [['Ex. A', '#ex-a'], ['Publication', '#toa-a']], w: ['courts', 'detection', 'datasets', 'PhantomDocket', 'evaluation', 'generative AI', 'institutional capacity'] },
+    { label: 'Legal Retrieval Benchmark', name: 'A Reasoning-Focused Legal Retrieval Benchmark and Housing Statute QA (Ex. B)', links: [['Ex. B', '#ex-b'], ['Publication', '#toa-b'], ['Paper', 'https://doi.org/10.1145/3709025.3712219']], w: ['legal research', 'statutory law', 'housing law', 'retrieval', 'benchmarks', 'evaluation', 'generative AI', 'access to justice'] },
+    { label: 'Eviction Defense Tool', name: 'Eviction notice defect tool (Ex. I)', links: [['Ex. I', '#ex-i'], ['Class report', 'https://justiceinnovation.law.stanford.edu/ai-for-legal-help-2026-class-report-scoping-building-and-testing-new-legal-aid-tech-systems/']], w: ['housing law', 'courts', 'generative AI', 'human supervision', 'access to justice'] },
+    { label: 'ECHR Guides', name: 'How legal guidance changes over time (Ex. C)', links: [['Ex. C', '#ex-c']], w: ['legal research'] },
+    { label: 'Graphika Retrieval', name: 'Applied science at Graphika (Ex. K)', links: [['Ex. K', '#ex-k']], w: ['linguistics', 'retrieval', 'embeddings', 'evaluation', 'generative AI'] },
+    { label: 'Subliminal Shuffling', name: 'Shuffling subliminal sequences, CS 221M (Ex. G)', links: [['Ex. G', '#ex-g'], ['Code', 'https://github.com/J0V1K/mechinterp-project']], w: ['interpretability', 'training', 'generative AI', 'AI safety'] },
+    { label: 'EHR Bias Audit', name: 'Implicit bias in AI-generated discharge summaries (Ex. H)', links: [['Ex. H', '#ex-h'], ['Code', 'https://github.com/J0V1K/ehr-bias-analysis-329r']], w: ['embeddings', 'evaluation', 'generative AI', 'bias'] },
+    { label: 'Xaliwar', name: 'Xaliwar, a constructed language (Ex. E)', links: [['Ex. E', '#ex-e']], w: ['linguistics', 'constructed languages', 'syntax'] },
+    { label: 'Cite-Graph Pretraining', name: 'Citation-graph pretraining for legal reasoning, CS 422 (Ex. F)', links: [['Ex. F', '#ex-f']], w: ['legal research', 'statutory law', 'training', 'retrieval', 'generative AI'] },
+    { label: 'MindMap', name: 'MindMap: clustering student responses, CS 293 (Ex. J)', links: [['Ex. J', '#ex-j']], w: ['education', 'clustering', 'embeddings', 'evaluation', 'generative AI'] },
+    { label: 'Capacity Before Control', name: 'Capacity Before Control (Machina, Issue 3)', links: [['Read', 'https://online.fliphtml5.com/symsyssociety/Machina_issue3/'], ['Publication', '#toa-d']], w: ['generative AI', 'AI governance', 'institutional capacity'] },
+    { label: 'Infinite Story', name: 'Infinite Story, generative AI in CS education (Ex. D)', links: [['Ex. D', '#ex-d'], ['Nifty', 'https://nifty.stanford.edu/2025/piech-infinite-story/'], ['CS 106A', 'https://web.stanford.edu/class/archive/cs/cs106a/cs106a.1258/assignments/4-infinitestory/'], ['Publication', '#toa-c']], w: ['education', 'generative AI', 'AI ethics'] },
+    { label: 'Man or Machine?', name: 'SLE 99: Man or Machine? (student-led seminar)', links: [['Syllabus', '#sle-99'], ['Service', '#teaching']], w: ['education', 'generative AI', 'machine minds', 'AI ethics'] },
+    { label: 'Teaching', name: 'Teaching record', links: [['Service', '#teaching'], ['Section notes', '#section-notes']], w: ['education', 'AI ethics'] },
     { label: 'Reviewing', name: 'Fellowships and reviewing', links: [['Service', '#fellowships']], w: ['legal research', 'education', 'AI governance'] }
   ];
-  const LAW = ['courts', 'legal research', 'housing law', 'access to justice', 'AI governance', 'institutional capacity'];
-  const LANG = ['language', 'grammar design'];
-  const OTHER = ['health care', 'education', 'human review', 'bias', 'AI ethics', 'machine minds'];
+  const LAW = ['courts', 'legal research', 'statutory law', 'housing law', 'access to justice', 'AI governance', 'institutional capacity'];
+  const LANG = ['linguistics', 'constructed languages', 'syntax'];
+  const OTHER = ['education', 'human supervision', 'bias', 'AI ethics', 'machine minds'];
   const kindOf = w => LAW.includes(w) ? 'law' : LANG.includes(w) ? 'lang' : OTHER.includes(w) ? 'other' : 'cs';
   const nodes = [], idx = {}, edges = [];
   works.forEach(wk => { wk.node = nodes.length; nodes.push({ w: wk.label, k: 'work', c: 3, work: wk }); });
@@ -1004,7 +1004,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     }
     edges.forEach(e => {
       const p = nodes[e.a], q = nodes[e.b], dx = q.x - p.x, dy = q.y - p.y, d = Math.hypot(dx, dy) || 1;
-      const f = (d - L) * .02 * alpha;
+      const f = (d - L) * .02 * alpha / Math.sqrt(Math.max(nbr[e.a].size, nbr[e.b].size) / 4 + .75);   // hubs pull more gently, so one big keyword doesn't crush the layout
       p.vx += f * dx / d; p.vy += f * dy / d; q.vx -= f * dx / d; q.vy -= f * dy / d;
     });
     for (let i = 0; i < nodes.length; i++) for (let j = i + 1; j < nodes.length; j++) {
