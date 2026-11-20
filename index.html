@@ -263,6 +263,30 @@ figure.figure { margin-inline: 0; }
 .dlab { grid-column: 1 / -1; font: 11.5px/1.4 var(--font-mono); color: var(--f-dim); min-height: 2.8em; }
 .fig-cap { font-size: 12.5px; color: var(--f-dim); }
 
+/* PhantomDocket funnel (Ex. A-1) */
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--f-dim); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.pd-replay { font: 500 11px var(--font-mono); color: var(--f-dim); background: none; border: 1px solid var(--f-line); border-radius: 4px; padding: 2px 8px; cursor: pointer; }
+.pd-replay:hover { color: var(--f-ink); border-color: var(--f-dim); }
+.pd-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.pd-steps li { display: grid; grid-template-columns: minmax(0, 1fr) 3.4em minmax(0, 15em) 6.2em; align-items: center; gap: 10px; font-size: 13px; line-height: 1.3; }
+.pd-steps b { font: 500 12.5px var(--font-mono); text-align: right; font-variant-numeric: tabular-nums; color: var(--f-ink); }
+.pd-steps .pd-l { color: var(--f-ink); }
+.pd-steps em { font: normal 11.5px var(--font-mono); color: var(--f-dim); text-align: right; }
+.pd-bar { height: 12px; position: relative; display: block; }
+.pd-bar i { position: absolute; right: 0; top: 0; bottom: 0; width: calc(var(--n) / 1848 * 100%); background: #b8bcc2; border-radius: 1px; transition: width .6s cubic-bezier(.3, .9, .4, 1); }
+.pd-steps .end .pd-bar i { background: var(--f-ai); }
+.pd-steps li { opacity: 1; transition: opacity .35s; }
+#fig-pd.armed .pd-steps li, #fig-pd.armed .pd-mix { opacity: 0; }
+#fig-pd.armed .pd-bar i { width: calc(var(--prev, 1848) / 1848 * 100%); }
+#fig-pd.armed .pd-stack i { flex-grow: 0; }
+.pd-mix { display: grid; gap: 6px; transition: opacity .35s; }
+.pd-stack { display: flex; height: 14px; gap: 2px; }
+.pd-stack i { flex: var(--k) 1 0; min-width: 0; transition: flex-grow .8s cubic-bezier(.3, .9, .4, 1); }
+.pd-mix i.h { background: var(--f-ai); } .pd-mix i.s { background: color-mix(in srgb, var(--f-ai) 38%, #fff); } .pd-mix i.c { background: #b8bcc2; }
+.pd-mix .legend b { font: 500 12px var(--font-mono); color: var(--f-ink); margin-right: 4px; }
+@media (max-width: 520px) { .pd-steps li { grid-template-columns: minmax(0, 1fr) 3.4em; } .pd-steps .pd-l { grid-column: 1 / -1; grid-row: 2; font-size: 12px; } .pd-steps em { display: none; } }
+
 /* Conlang builder */
 .cl-ctl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 12px; }
 .cl-ctl label { display: grid; gap: 2px; font-size: 12px; color: var(--f-dim); }
@@ -527,7 +551,7 @@ figure.figure { margin-inline: 0; }
 
       <h3 class="cat">Datasets</h3>
       <div class="auth" id="toa-e">
-        <p class="ldr">Javokhir Arifov et al., <i><a href="https://huggingface.co/datasets/Arifov/PhantomDocket">PhantomDocket</a></i>, Hugging Face (2026) (court filings with verified AI use)<span class="lead"></span><span class="y"><a href="#ex-a">Ex. A</a></span></p>
+        <p class="ldr">Javokhir Arifov et al., <i><a href="https://huggingface.co/datasets/Arifov/PhantomDocket">PhantomDocket</a></i>, Hugging Face (2026) (court filings with verified AI use)<span class="lead"></span><span class="y"><a href="#ex-a1">Ex. A-1</a></span></p>
       </div>
 
       <h3 class="cat">Other Authorities</h3>
@@ -552,18 +576,19 @@ figure.figure { margin-inline: 0; }
       <div class="colhead"><span>Exhibit</span><span>Page</span></div>
       <h3 class="cat">Research</h3>
       <p class="ldr idx"><a href="#ex-a"><span class="k">A</span>Detection Objection</a><span class="lead"></span><span class="y">2</span></p>
-      <p class="ldr idx"><a href="#ex-b"><span class="k">B</span>Legal Retrieval Benchmark</a><span class="lead"></span><span class="y">3</span></p>
-      <p class="ldr idx"><a href="#ex-c"><span class="k">C</span>ECHR Guides</a><span class="lead"></span><span class="y">3</span></p>
-      <p class="ldr idx"><a href="#ex-d"><span class="k">D</span>Infinite Story</a><span class="lead"></span><span class="y">4</span></p>
+      <p class="ldr idx"><a href="#ex-a1"><span class="k">A-1</span>PhantomDocket</a><span class="lead"></span><span class="y">3</span></p>
+      <p class="ldr idx"><a href="#ex-b"><span class="k">B</span>Legal Retrieval Benchmark</a><span class="lead"></span><span class="y">4</span></p>
+      <p class="ldr idx"><a href="#ex-c"><span class="k">C</span>ECHR Guides</a><span class="lead"></span><span class="y">4</span></p>
+      <p class="ldr idx"><a href="#ex-d"><span class="k">D</span>Infinite Story</a><span class="lead"></span><span class="y">5</span></p>
       <h3 class="cat">Coursework</h3>
-      <p class="ldr idx"><a href="#ex-e"><span class="k">E</span>Xaliwar</a><span class="lead"></span><span class="y">5</span></p>
-      <p class="ldr idx"><a href="#ex-f"><span class="k">F</span>Cite-Graph Pretraining</a><span class="lead"></span><span class="y">6</span></p>
-      <p class="ldr idx"><a href="#ex-g"><span class="k">G</span>Subliminal Shuffling</a><span class="lead"></span><span class="y">7</span></p>
-      <p class="ldr idx"><a href="#ex-h"><span class="k">H</span>EHR Bias Audit</a><span class="lead"></span><span class="y">8</span></p>
-      <p class="ldr idx"><a href="#ex-i"><span class="k">I</span>Eviction Defense Tool</a><span class="lead"></span><span class="y">9</span></p>
-      <p class="ldr idx"><a href="#ex-j"><span class="k">J</span>MindMap</a><span class="lead"></span><span class="y">10</span></p>
+      <p class="ldr idx"><a href="#ex-e"><span class="k">E</span>Xaliwar</a><span class="lead"></span><span class="y">6</span></p>
+      <p class="ldr idx"><a href="#ex-f"><span class="k">F</span>Cite-Graph Pretraining</a><span class="lead"></span><span class="y">7</span></p>
+      <p class="ldr idx"><a href="#ex-g"><span class="k">G</span>Subliminal Shuffling</a><span class="lead"></span><span class="y">8</span></p>
+      <p class="ldr idx"><a href="#ex-h"><span class="k">H</span>EHR Bias Audit</a><span class="lead"></span><span class="y">9</span></p>
+      <p class="ldr idx"><a href="#ex-i"><span class="k">I</span>Eviction Defense Tool</a><span class="lead"></span><span class="y">10</span></p>
+      <p class="ldr idx"><a href="#ex-j"><span class="k">J</span>MindMap</a><span class="lead"></span><span class="y">11</span></p>
       <h3 class="cat">Industry</h3>
-      <p class="ldr idx"><a href="#ex-k"><span class="k">K</span>Graphika Retrieval</a><span class="lead"></span><span class="y">11</span></p>
+      <p class="ldr idx"><a href="#ex-k"><span class="k">K</span>Graphika Retrieval</a><span class="lead"></span><span class="y">12</span></p>
     </div>
     <div class="foot"><span class="pg">- 1 -</span><span class="dt">Index of Exhibits</span></div>
   </article>
@@ -576,7 +601,7 @@ figure.figure { margin-inline: 0; }
         <h2 class="h-brief u">EXHIBIT A</h2>
         <h3 class="t" id="h-exa">Detection Objection: generative AI in state civil courts</h3>
         <p class="m">Stanford RegLab, 2026. <a class="xref" href="https://dho.stanford.edu/wp-content/uploads/GenAI_Courts.pdf" target="_blank" rel="noopener">Paper ↗</a> <a class="xref" href="https://detection-objection.reglabapp.com/" target="_blank" rel="noopener">Project page ↗</a> <a class="xref" href="https://huggingface.co/datasets/Arifov/PhantomDocket" target="_blank" rel="noopener">PhantomDocket ↗</a></p>
-        <p class="para">I lead a team measuring AI-assisted drafting in four state trial court systems. Detectors struggle here: a quarter of filing tokens are boilerplate, and one detector flagged under 5% to almost 50% of filings depending on its settings. We built <a href="https://huggingface.co/datasets/Arifov/PhantomDocket" target="_blank" rel="noopener"><code>PhantomDocket</code></a>, 980 filings known to have used generative AI, and <code>ScoreMix</code>, an estimator robust to those settings. In 127,518 complaints, prevalence is near zero before 2023, then rises sharply.</p>
+        <p class="para">I lead a team measuring AI-assisted drafting in four state trial court systems. Detectors struggle here: a quarter of filing tokens are boilerplate, and one detector flagged under 5% to almost 50% of filings depending on its settings. We built <a href="#ex-a1"><code>PhantomDocket</code></a>, 980 filings known to have used generative AI, and <code>ScoreMix</code>, an estimator robust to those settings. In 127,518 complaints, prevalence is near zero before 2023, then rises sharply.</p>
         <ul class="finds" aria-label="Estimated share of 2026 complaints with AI-assisted drafting">
           <li style="--v:37.8"><span>Santa Clara, Cal.</span><b>38%</b></li>
           <li style="--v:35.6"><span>San Francisco, Cal.</span><b>36%</b></li>
@@ -587,7 +612,7 @@ figure.figure { margin-inline: 0; }
         </ul>
         <p class="fig-cap">Share of 2026 complaints with AI-assisted drafting. Likely conservative.</p>
         <div class="figure" id="fig-dial" style="margin-top: 0">
-          <div class="fig-head"><b>Fig. 1. One set of complaints, many answers</b><span>Santa Clara 2026 · real estimates · <a class="xref" href="https://detection-objection.reglabapp.com/" target="_blank" rel="noopener">from project page ↗</a></span></div>
+          <div class="fig-head"><b>Fig. 1. One set of complaints, many answers</b><span>Santa Clara 2026</span></div>
           <div class="seg" role="group" aria-label="Step">
             <button type="button" data-s="0" aria-pressed="true">1 Setting</button>
             <button type="button" data-s="1" aria-pressed="false">2 Cutoff</button>
@@ -607,6 +632,42 @@ figure.figure { margin-inline: 0; }
       </section>
     </div>
     <div class="foot"><span class="pg">- 2 -</span><span class="dt">Exhibits</span></div>
+  </article>
+
+  <article class="sheet" aria-label="Exhibit A-1">
+    <span class="extab" aria-hidden="true">EXHIBIT A-1</span>
+    <div class="nums" aria-hidden="true"></div>
+    <div class="lines">
+      <section class="exh" id="ex-a1" aria-labelledby="h-exa1">
+        <h2 class="h-brief u">EXHIBIT A-1</h2>
+        <h3 class="t" id="h-exa1">PhantomDocket: court filings with verified AI use</h3>
+        <p class="m">Stanford RegLab, 2026. CC0. <a class="xref" href="https://huggingface.co/datasets/Arifov/PhantomDocket" target="_blank" rel="noopener">Dataset ↗</a> <a class="xref" href="https://dho.stanford.edu/wp-content/uploads/GenAI_Courts.pdf" target="_blank" rel="noopener">Paper ↗</a> <a class="xref" href="https://detection-objection.reglabapp.com/#method" target="_blank" rel="noopener">Project page ↗</a></p>
+        <p class="para">To calibrate a detector you need filings where AI use is known. Judges supply them: when a ruling calls out a hallucinated citation, the filing behind it almost certainly used generative AI. We started from Charlotin&rsquo;s AI Hallucination Cases Database, found each case&rsquo;s docket, and pulled the filing the judge flagged. For contrast, we pulled filings by the judge and opposing counsel in the same cases.</p>
+        <div class="figure" id="fig-pd">
+          <div class="fig-head"><b>Fig. 2. From a judge&rsquo;s ruling to the filing</b><button type="button" class="pd-replay">Replay ↻</button></div>
+          <ol class="pd-steps" aria-label="Collection funnel, in cases">
+            <li style="--n:1848"><span class="pd-bar"><i></i></span><b>1,848</b><span class="pd-l">rulings in Charlotin&rsquo;s database</span></li>
+            <li style="--n:1279"><span class="pd-bar"><i></i></span><b>1,279</b><span class="pd-l">in U.S. courts</span><em>&minus;569 abroad</em></li>
+            <li style="--n:1164"><span class="pd-bar"><i></i></span><b>1,164</b><span class="pd-l">docket found</span><em>&minus;115</em></li>
+            <li style="--n:928"><span class="pd-bar"><i></i></span><b>928</b><span class="pd-l">on CourtLink or Bloomberg Law</span><em>&minus;236</em></li>
+            <li style="--n:679"><span class="pd-bar"><i></i></span><b>679</b><span class="pd-l">flagged filing named in docket</span><em>&minus;249</em></li>
+            <li class="end" style="--n:619"><span class="pd-bar"><i></i></span><b>619</b><span class="pd-l">cases retrieved</span><em>&minus;60</em></li>
+          </ol>
+          <div class="pd-mix" aria-label="Dataset composition: 980 hallucination filings, 538 other filings by the same party, 771 controls">
+            <div class="pd-stack"><i class="h" style="--k:980"></i><i class="s" style="--k:538"></i><i class="c" style="--k:771"></i></div>
+            <div class="legend"><span><i class="h"></i><b>980</b> flagged filings</span><span><i class="s"></i><b>538</b> same filer, unconfirmed</span><span><i class="c"></i><b>771</b> judge &amp; opposing counsel</span></div>
+          </div>
+          <p class="fig-cap">Cases at each step; the 619 retrieved cases yield 2,289 filings.</p>
+        </div>
+        <ul class="finds" aria-label="How well detectors separate flagged filings from controls (AUROC)">
+          <li style="--v:94.6"><span>Pangram</span><b>0.95</b></li>
+          <li style="--v:89.6"><span>EditLens (used)</span><b>0.90</b></li>
+        </ul>
+        <p class="fig-cap">AUROC on PhantomDocket, flagged filings vs. controls. EditLens is open and close behind.</p>
+        <p class="para">PhantomDocket did two jobs in the paper. It ranked the detectors, and it chose EditLens&rsquo;s setting, the one on the dial in <a href="#ex-a">Exhibit A</a>. It is public on Hugging Face under CC0, with each filing&rsquo;s PDF, docket entry, and which side filed it.</p>
+      </section>
+    </div>
+    <div class="foot"><span class="pg">- 3 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibits B and C">
@@ -633,7 +694,7 @@ figure.figure { margin-inline: 0; }
         <p class="para">A versioned dataset of European Court of Human Rights case-law guides, built from archived snapshots, with about 1,000 citation-level additions and removals across 38 guides.</p>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 3 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 4 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibit D">
@@ -651,7 +712,7 @@ figure.figure { margin-inline: 0; }
         </figure>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 4 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 5 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibit E">
@@ -692,7 +753,7 @@ figure.figure { margin-inline: 0; }
         </div>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 5 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 6 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibit F">
@@ -706,7 +767,7 @@ figure.figure { margin-inline: 0; }
         <p class="para"><a href="https://arxiv.org/abs/2310.10638" target="_blank" rel="noopener">In-Context Pretraining</a> (Shi et al., 2024) packs related documents into the same training context instead of random ones, and models trained this way reason better across documents. I extracted cross-references from 205 California landlord-tenant statutes, built a citation graph, and packed documents four ways for masked-language-model pretraining: random, citation-only, hierarchy, and cite-graph. Most cross-references pointed to nearby sections that hierarchy packing already keeps together, and the rarer cross-chapter links were too sparse, and too low in our packing priority, to make a difference.</p>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 6 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 7 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibit G">
@@ -737,7 +798,7 @@ figure.figure { margin-inline: 0; }
         </figure>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 7 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 8 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibit H">
@@ -779,7 +840,7 @@ figure.figure { margin-inline: 0; }
         </figure>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 8 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 9 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibit I">
@@ -797,7 +858,7 @@ figure.figure { margin-inline: 0; }
         </figure>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 9 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 10 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibit J">
@@ -820,7 +881,7 @@ figure.figure { margin-inline: 0; }
         </div>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 10 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 11 -</span><span class="dt">Exhibits</span></div>
   </article>
 
   <article class="sheet" aria-label="Exhibit K">
@@ -838,7 +899,7 @@ figure.figure { margin-inline: 0; }
         </figure>
       </section>
     </div>
-    <div class="foot"><span class="pg">- 11 -</span><span class="dt">Exhibits</span></div>
+    <div class="foot"><span class="pg">- 12 -</span><span class="dt">Exhibits</span></div>
   </article>
 
 
@@ -1087,6 +1148,32 @@ figure.figure { margin-inline: 0; }
   })();
 
 
+  /* ---------- Fig. 2: PhantomDocket funnel (Ex. A-1) ---------- */
+  (() => {
+    const fig = document.getElementById('fig-pd'); if (!fig) return;
+    const rows = [...fig.querySelectorAll('.pd-steps li')], mix = fig.querySelector('.pd-mix');
+    rows.forEach((li, i) => li.style.setProperty('--prev', i ? rows[i - 1].style.getPropertyValue('--n') : 1848));
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { fig.querySelector('.pd-replay').hidden = true; return; }
+    let timers = [];
+    const play = () => {
+      timers.forEach(clearTimeout); timers = [];
+      fig.classList.add('armed'); rows.forEach(li => li.style.opacity = ''); mix.style.opacity = '';
+      fig.querySelectorAll('.pd-bar i').forEach(e => e.style.width = ''); fig.querySelectorAll('.pd-stack i').forEach(e => e.style.flexGrow = '');
+      void fig.offsetWidth;
+      rows.forEach((li, i) => {
+        timers.push(setTimeout(() => { li.style.opacity = 1; }, i * 520));
+        timers.push(setTimeout(() => { li.querySelector('.pd-bar i').style.width = `calc(var(--n) / 1848 * 100%)`; }, i * 520 + 180));
+      });
+      const t = rows.length * 520 + 200;
+      timers.push(setTimeout(() => { mix.style.opacity = 1; }, t));
+      timers.push(setTimeout(() => { fig.querySelectorAll('.pd-stack i').forEach(e => e.style.flexGrow = e.style.getPropertyValue('--k')); }, t + 150));
+    };
+    fig.querySelector('.pd-replay').addEventListener('click', play);
+    fig.classList.add('armed');
+    if ('IntersectionObserver' in window) new IntersectionObserver((es, o) => { if (es.some(e => e.isIntersecting)) { o.disconnect(); play(); } }, { threshold: .35 }).observe(fig);
+    else play();
+  })();
+
   /* ---------- Xaliwar noun builder (Ex. E) ---------- */
   const CL = {
     roots: [['galbi', 'friend', 'friends'], ['tʃia', 'book', 'books'], ['mohe', 'home', 'homes'], ['ibe', 'brick', 'bricks'], ['xona', 'room', 'rooms'], ['joʃ', 'kid', 'kids']],
@@ -1163,7 +1250,7 @@ figure.figure { margin-inline: 0; }
   const works = [
     { label: 'Opening Brief', name: "Opening Brief, page 1", links: [['Page 1', '#brief']], w: ['law', 'courts', 'linguistics', 'evaluation', 'generative AI', 'AI governance', 'AI safety', 'access to justice', 'institutional capacity'] },
     { label: 'Detection Objection', name: 'Detection Objection: generative AI in state civil courts (Ex. A)', links: [['Ex. A', '#ex-a'], ['Publication', '#toa-a'], ['Paper', 'https://dho.stanford.edu/wp-content/uploads/GenAI_Courts.pdf'], ['Project page', 'https://detection-objection.reglabapp.com/']], w: ['law', 'courts', 'detection', 'datasets', 'PhantomDocket', 'evaluation', 'generative AI', 'institutional capacity'] },
-    { label: 'PhantomDocket', name: 'PhantomDocket: court filings with verified AI use (dataset)', links: [['Dataset', 'https://huggingface.co/datasets/Arifov/PhantomDocket'], ['Publication', '#toa-e'], ['Ex. A', '#ex-a']], w: ['law', 'courts', 'datasets', 'detection', 'benchmarks', 'generative AI'] },
+    { label: 'PhantomDocket', name: 'PhantomDocket: court filings with verified AI use (Ex. A-1)', links: [['Ex. A-1', '#ex-a1'], ['Dataset', 'https://huggingface.co/datasets/Arifov/PhantomDocket'], ['Publication', '#toa-e']], w: ['law', 'courts', 'datasets', 'detection', 'benchmarks', 'generative AI'] },
     { label: 'Legal Retrieval Benchmark', name: 'Legal Retrieval Benchmark: Bar Exam QA and Housing Statute QA (Ex. B)', links: [['Ex. B', '#ex-b'], ['Publication', '#toa-b'], ['Paper', 'https://doi.org/10.1145/3709025.3712219']], w: ['law', 'legal research', 'statutory law', 'housing law', 'retrieval', 'benchmarks', 'evaluation', 'generative AI', 'access to justice'] },
     { label: 'Eviction Defense Tool', name: 'Eviction Defense Tool: flagging defects in eviction notices (Ex. I)', links: [['Ex. I', '#ex-i'], ['Class report', 'https://justiceinnovation.law.stanford.edu/ai-for-legal-help-2026-class-report-scoping-building-and-testing-new-legal-aid-tech-systems/']], w: ['law', 'housing law', 'courts', 'generative AI', 'human supervision', 'access to justice'] },
     { label: 'ECHR Guides', name: 'ECHR Guides: how legal guidance changes over time (Ex. C)', links: [['Ex. C', '#ex-c']], w: ['law', 'legal research'] },
@@ -1445,8 +1532,8 @@ figure.figure { margin-inline: 0; }
     h = ALIAS[h] || h;
     if (h === 'service') return ['record', null];
     if (VIEWS[h] && h !== 'home') return [h, null];
-    if (/^ex-[a-k]$/.test(h)) return ['exhibits', h];
-    if (/^toa-[a-d]$/.test(h)) return ['authorities', h];
+    if (/^ex-(?:[a-k]|a1)$/.test(h)) return ['exhibits', h];
+    if (/^toa-[a-e]$/.test(h)) return ['authorities', h];
     if (h === 'teaching' || h === 'fellowships' || h === 'section-notes' || h === 'sle-99') return ['record', h];
     if (h === 'graph') return ['home', 'graph'];
     return ['home', 'brief'];
