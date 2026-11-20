@@ -19,5 +19,5 @@ One self-contained page: `index.html`. Open it in a browser to preview; reload a
 
 ## Notes
 - Each sheet is 28 numbered lines; extra text makes the numbers run past 28.
-- Page links: `#brief`, `#interests`, `#publications`, `#projects`, `#service`, plus `#ex-a` to `#ex-k` and `#toa-a` to `#toa-d`.
+- Page links: `#brief`, `#interests`, `#publications`, `#projects`, `#service`, plus `#ex-a` to `#ex-k` and `#toa-a` to `#toa-e` (`#toa-e` is the PhantomDocket dataset).
 - The published copy is a separate artifact; send the edited file back to Claude to republish, or host it yourself (e.g. GitHub Pages).

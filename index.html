@@ -252,19 +252,14 @@ figure.figure { margin-inline: 0; }
 .seg { justify-self: start; display: inline-flex; border: 1px solid var(--f-line); border-radius: 6px; padding: 2px; gap: 2px; }
 .seg button { font: 500 12.5px var(--font-sans); color: var(--f-dim); background: none; border: 0; border-radius: 4px; padding: 4px 10px; cursor: pointer; }
 .seg button[aria-pressed="true"] { background: var(--f-ink); color: var(--sheet); }
-#dist { width: 100%; height: 170px; display: block; }
-.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 12px; color: var(--f-dim); }
-.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
-.controls { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 24px; }
-.ctl { display: grid; gap: 2px; }
-.ctl label { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--f-dim); }
-.ctl output { font-family: var(--font-mono); color: var(--f-ink); font-variant-numeric: tabular-nums; }
-input[type=range] { width: 100%; accent-color: var(--red); }
-.readout { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; border-top: 1px solid var(--f-line); padding-top: 10px; }
-.readout div { display: grid; }
-.readout span { font-size: 11.5px; color: var(--f-dim); }
-.readout strong { font-family: var(--font-mono); font-weight: 500; font-size: 18px; font-variant-numeric: tabular-nums; }
-.readout .bad { color: var(--red); }
+#dial { width: 100%; max-width: 420px; height: auto; display: block; justify-self: center; overflow: visible; }
+#dial .needle { transition: transform .45s cubic-bezier(.34, 1.3, .55, 1); transform-origin: 240px 240px; }
+.dread { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 14px; align-items: end; border-top: 1px solid var(--f-line); padding-top: 10px; }
+.dread strong { font: 500 30px/1 var(--font-mono); font-variant-numeric: tabular-nums; color: var(--f-ink); }
+.dread strong.cal { color: var(--f-ai); }
+.dread #d-band-t { font: 11.5px/1.35 var(--font-mono); color: var(--f-dim); text-align: right; }
+.dread #d-band-t b { display: block; color: var(--f-ink); font-weight: 500; }
+.dlab { grid-column: 1 / -1; font: 11.5px/1.4 var(--font-mono); color: var(--f-dim); min-height: 2.8em; }
 .fig-cap { font-size: 12.5px; color: var(--f-dim); }
 
 /* Conlang builder */
@@ -413,7 +408,6 @@ input[type=range] { width: 100%; accent-color: var(--red); }
   .auth .by { grid-column: 1; }
   .auth .tools { grid-column: 2; }
   .idx { padding-left: 0; }
-  .controls { grid-template-columns: 1fr; }
   .cl-ctl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } .flash { animation-duration: .01s; } }
@@ -480,7 +474,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
         <h2 class="h-brief u">TABLE OF AUTHORITIES</h2>
         <div class="colhead"><span></span><span>Page(s)</span></div>
         <h3 class="cat">Pending Review</h3>
-        <p>Javokhir Arifov et al., <i>Detection Objection: Documenting, Calibrating, and Detecting the Rise of AI Text in U.S. State Courts</i>, ACM CS&amp;Law (2027) <span style="float:right">Ex. A</span></p>
+        <p>Javokhir Arifov et al., <i>Detection Objection: Documenting, Calibrating, and Detecting the Rise of AI-Assisted Text in U.S. State Courts</i>, ACM CS&amp;Law (2027) <span style="float:right">Ex. A</span></p>
         <h3 class="cat">Conference Proceedings</h3>
         <p>Lucia Zheng et al., <i>A Reasoning-Focused Legal Retrieval Benchmark</i>, Proc. ACM Symp. on Comput. Sci. &amp; L. (2025) <span style="float:right">Ex. B</span></p>
         <p>Chris Piech et al., <i>Infinite Story</i>, ACM SIGCSE Tech. Symp., Nifty Assignments (2025) <span style="float:right">Ex. D</span></p>
@@ -516,8 +510,8 @@ input[type=range] { width: 100%; accent-color: var(--red); }
 
       <h3 class="cat">Pending Review</h3>
       <div class="auth" id="toa-a">
-        <p class="ldr">Javokhir Arifov et al., <i>Detection Objection: Documenting, Calibrating, and Detecting the Rise of AI Text in U.S. State Courts</i>, ACM CS&amp;Law (2027)<span class="lead"></span><span class="y"><a href="#ex-a">Ex. A</a></span></p>
-        <p class="by"><b>Arifov</b>, Spangher, Hennessy, Karan, Hariri, Ho</p>
+        <p class="ldr">Javokhir Arifov et al., <i><a href="https://dho.stanford.edu/wp-content/uploads/GenAI_Courts.pdf">Detection Objection: Documenting, Calibrating, and Detecting the Rise of AI-Assisted Text in U.S. State Courts</a></i>, ACM CS&amp;Law (2027)<span class="lead"></span><span class="y"><a href="#ex-a">Ex. A</a></span></p>
+        <p class="by"><b>Arifov</b>, Spangher, Hennessy, Karan, Hariri, Ho &middot; <a href="https://detection-objection.reglabapp.com/">Project page</a> &middot; <a href="https://dho.stanford.edu/wp-content/uploads/GenAI_Courts.pdf">PDF</a></p>
       </div>
 
       <h3 class="cat">Conference Proceedings</h3>
@@ -528,6 +522,11 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       <div class="auth" id="toa-c">
         <p class="ldr">Chris Piech et al., <i><a href="https://nifty.stanford.edu/2025/piech-infinite-story/">Infinite Story</a></i>, ACM SIGCSE Tech. Symp., Nifty Assignments (2025)<span class="lead"></span><span class="y"><a href="#ex-d">Ex. D</a></span></p>
         <p class="by">Piech, Sahami, Alonso, Liu, <b>Arifov</b>, Sreenivas, Webber, Zheng, Nguyen, Mlauzi, Woodrow</p>
+      </div>
+
+      <h3 class="cat">Datasets</h3>
+      <div class="auth" id="toa-e">
+        <p class="ldr">Javokhir Arifov et al., <i><a href="https://huggingface.co/datasets/Arifov/PhantomDocket">PhantomDocket</a></i>, Hugging Face (2026) (court filings with verified AI use)<span class="lead"></span><span class="y"><a href="#ex-a">Ex. A</a></span></p>
       </div>
 
       <h3 class="cat">Other Authorities</h3>
@@ -575,8 +574,8 @@ input[type=range] { width: 100%; accent-color: var(--red); }
       <section class="exh" id="ex-a" aria-labelledby="h-exa">
         <h2 class="h-brief u">EXHIBIT A</h2>
         <h3 class="t" id="h-exa">Detection Objection: generative AI in state civil courts</h3>
-        <p class="m">Stanford RegLab, 2026.</p>
-        <p class="para">I lead a team measuring AI-assisted drafting in four state trial court systems. Detectors struggle here: a quarter of filing tokens are boilerplate, and one detector flagged under 5% to almost 50% of filings depending on its settings. We built <code>PhantomDocket</code>, 980 filings known to have used generative AI, and <code>ScoreMix</code>, an estimator robust to those settings. In 127,518 complaints, prevalence is near zero before 2023, then rises sharply.</p>
+        <p class="m">Stanford RegLab, 2026. <a class="xref" href="https://dho.stanford.edu/wp-content/uploads/GenAI_Courts.pdf" target="_blank" rel="noopener">Paper ↗</a> <a class="xref" href="https://detection-objection.reglabapp.com/" target="_blank" rel="noopener">Project page ↗</a> <a class="xref" href="https://huggingface.co/datasets/Arifov/PhantomDocket" target="_blank" rel="noopener">PhantomDocket ↗</a></p>
+        <p class="para">I lead a team measuring AI-assisted drafting in four state trial court systems. Detectors struggle here: a quarter of filing tokens are boilerplate, and one detector flagged under 5% to almost 50% of filings depending on its settings. We built <a href="https://huggingface.co/datasets/Arifov/PhantomDocket" target="_blank" rel="noopener"><code>PhantomDocket</code></a>, 980 filings known to have used generative AI, and <code>ScoreMix</code>, an estimator robust to those settings. In 127,518 complaints, prevalence is near zero before 2023, then rises sharply.</p>
         <ul class="finds" aria-label="Estimated share of 2026 complaints with AI-assisted drafting">
           <li><span>Santa Clara, self-represented</span><b>72%</b></li>
           <li><span>Santa Clara, all</span><b>38%</b></li>
@@ -584,24 +583,23 @@ input[type=range] { width: 100%; accent-color: var(--red); }
           <li><span>Oklahoma and Tulsa</span><b>16&ndash;17%</b></li>
         </ul>
         <p class="fig-cap">Share of 2026 complaints with AI-assisted drafting. Likely conservative.</p>
-        <div class="figure">
-          <div class="fig-head"><b>Fig. 1. Why a fixed detector threshold misleads</b><span>illustrative, synthetic</span></div>
-          <div class="seg" role="group" aria-label="Writing setting">
-            <button type="button" data-setting="general" aria-pressed="false">General prose</button>
-            <button type="button" data-setting="legal" aria-pressed="true">Legal filings</button>
+        <div class="figure" id="fig-dial">
+          <div class="fig-head"><b>Fig. 1. One set of complaints, many answers</b><span>Santa Clara 2026 · real estimates · <a class="xref" href="https://detection-objection.reglabapp.com/" target="_blank" rel="noopener">from project page ↗</a></span></div>
+          <div class="seg" role="group" aria-label="Step">
+            <button type="button" data-s="0" aria-pressed="true">1 Setting</button>
+            <button type="button" data-s="1" aria-pressed="false">2 Cutoff</button>
+            <button type="button" data-s="2" aria-pressed="false">3 ScoreMix</button>
           </div>
-          <canvas id="dist" aria-label="Distribution of detector scores for human-written and AI-written text, with a threshold line"></canvas>
-          <div class="legend"><span><i style="background:#b8bcc2"></i>Human-written</span><span><i style="background:var(--red)"></i>AI-written</span><span><i style="background:var(--ink)"></i>Threshold</span></div>
-          <div class="controls">
-            <div class="ctl"><label for="alpha">True share written by AI <output id="alpha-o">12%</output></label><input id="alpha" type="range" min="0" max="40" value="12" step="1"></div>
-            <div class="ctl"><label for="thr">Detector threshold <output id="thr-o">0.50</output></label><input id="thr" type="range" min="30" max="90" value="50" step="1"></div>
+          <svg id="dial" viewBox="-40 0 560 272" role="img" aria-label="Dial from 0 to 100 percent showing the share of Santa Clara 2026 complaints flagged or estimated as drafted with AI">
+            <g id="d-band"></g><g id="d-scale"></g><g id="d-ghosts"></g>
+            <g class="needle" id="d-needle"><line x1="240" y1="250" x2="240" y2="56" stroke="var(--f-ai)" stroke-width="4" stroke-linecap="round"></line></g>
+            <circle cx="240" cy="240" r="10" fill="var(--f-ink)"></circle>
+          </svg>
+          <div class="dread" aria-live="polite">
+            <strong id="d-big">52.1%</strong><span id="d-band-t"></span>
+            <span id="d-label" class="dlab"></span>
           </div>
-          <div class="readout">
-            <div><span>True share</span><strong id="r-true">12%</strong></div>
-            <div><span>Share above threshold</span><strong id="r-naive">0%</strong></div>
-            <div><span>Error</span><strong id="r-err" class="bad">0 pts</strong></div>
-          </div>
-          <p class="fig-cap">Legal prose scores higher on AI detectors than everyday writing, so the same threshold overcounts. ScoreMix needs no threshold.</p>
+          <p class="fig-cap" id="d-cap"></p>
         </div>
       </section>
     </div>
@@ -1015,51 +1013,75 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     });
   });
 
-  /* ---------- Fig. 1 ---------- */
-  const N = 240, xs = Array.from({ length: N }, (_, i) => (i + .5) / N);
-  const beta = (a, b) => { const raw = xs.map(x => x ** (a - 1) * (1 - x) ** (b - 1)); const z = raw.reduce((s, v) => s + v, 0) / N; return raw.map(v => v / z); };
-  const D = { general: beta(2, 7), legal: beta(3.6, 4.4), ai: beta(7, 2.2) };
-  const tail = (d, t) => d.reduce((s, v, i) => s + (xs[i] >= t ? v : 0), 0) / N;
-  let setting = 'legal';
-  const cv = document.getElementById('dist'), ctx = cv.getContext('2d');
-  const aEl = document.getElementById('alpha'), tEl = document.getElementById('thr');
-  function drawFig() {
-    const a = aEl.value / 100, t = tEl.value / 100;
-    document.getElementById('alpha-o').textContent = Math.round(a * 100) + '%';
-    document.getElementById('thr-o').textContent = t.toFixed(2);
-    const h = D[setting], ai = D.ai;
-    const naive = (1 - a) * tail(h, t) + a * tail(ai, t), err = (naive - a) * 100;
-    document.getElementById('r-true').textContent = Math.round(a * 100) + '%';
-    document.getElementById('r-naive').textContent = Math.round(naive * 100) + '%';
-    const e = document.getElementById('r-err');
-    e.textContent = (err >= 0 ? '+' : '−') + Math.abs(err).toFixed(0) + ' pts';
-    e.classList.toggle('bad', Math.abs(err) >= 3);
-    const dpr = devicePixelRatio || 1, W = cv.clientWidth, H = cv.clientHeight;
-    if (!W) return;
-    cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H);
-    const pb = 22, pt = 10, ymax = 3.4;
-    const X = x => x * W, Y = y => H - pb - Math.min(y, ymax) / ymax * (H - pb - pt);
-    const ink = cssv(cv, '--f-ink'), dim = cssv(cv, '--f-dim'), line = cssv(cv, '--f-line'), red = cssv(cv, '--f-ai'), hu = cssv(cv, '--f-hu');
-    ctx.strokeStyle = line; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, Y(0) + .5); ctx.lineTo(W, Y(0) + .5); ctx.stroke();
-    ctx.fillStyle = dim; ctx.font = '11px "IBM Plex Mono", monospace'; ctx.textBaseline = 'top';
-    [0, .25, .5, .75, 1].forEach(v => { ctx.textAlign = v === 0 ? 'left' : v === 1 ? 'right' : 'center'; ctx.fillText(v.toFixed(2), X(v), Y(0) + 6); });
-    const hy = h.map(v => (1 - a) * v), top = hy.map((v, i) => v + a * ai[i]);
-    ctx.beginPath(); ctx.moveTo(X(0), Y(0)); xs.forEach((x, i) => ctx.lineTo(X(x), Y(hy[i]))); ctx.lineTo(X(1), Y(0)); ctx.closePath();
-    ctx.fillStyle = hu; ctx.globalAlpha = .7; ctx.fill(); ctx.globalAlpha = 1;
-    ctx.beginPath(); xs.forEach((x, i) => ctx.lineTo(X(x), Y(top[i]))); for (let i = N - 1; i >= 0; i--) ctx.lineTo(X(xs[i]), Y(hy[i]));
-    ctx.closePath(); ctx.fillStyle = red; ctx.globalAlpha = .8; ctx.fill(); ctx.globalAlpha = 1;
-    ctx.beginPath(); xs.forEach((x, i) => i ? ctx.lineTo(X(x), Y(top[i])) : ctx.moveTo(X(x), Y(top[i]))); ctx.strokeStyle = ink; ctx.lineWidth = 1.2; ctx.stroke();
-    ctx.setLineDash([4, 3]); ctx.lineWidth = 1.5; ctx.beginPath(); ctx.moveTo(X(t), pt); ctx.lineTo(X(t), Y(0)); ctx.stroke(); ctx.setLineDash([]);
-    ctx.fillStyle = ink; ctx.font = '500 11px "IBM Plex Mono", monospace';
-    const lab = 'flagged →', lw = ctx.measureText(lab).width, right = X(t) + 6 + lw <= W;
-    ctx.textAlign = right ? 'left' : 'right'; ctx.fillText(lab, right ? X(t) + 6 : X(t) - 6, pt);
-  }
-  document.querySelectorAll('.seg button[data-setting]').forEach(b => b.addEventListener('click', () => {
-    setting = b.dataset.setting;
-    document.querySelectorAll('.seg button[data-setting]').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
-    drawFig();
-  }));
-  aEl.addEventListener('input', drawFig); tEl.addEventListener('input', drawFig);
+  /* ---------- Fig. 1: the dial (adapted from detection-objection.reglabapp.com) ---------- */
+  (() => {
+    const NS = 'http://www.w3.org/2000/svg';
+    const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); parent && parent.appendChild(e); return e; };
+    const fmt = v => v < 0.005 ? '≈0%' : (Math.round(v * 10) / 10).toString().replace(/\.0$/, '') + '%';
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const CX = 240, CY = 240, R = 200, FONT = '"IBM Plex Mono", monospace';
+    const ang = p => Math.PI * (1 - p / 100), pt = (p, r) => [CX + r * Math.cos(ang(p)), CY - r * Math.sin(ang(p))];
+    const scale = document.getElementById('d-scale');
+    el('path', { d: `M${pt(0, R)} A${R} ${R} 0 0 1 ${pt(50, R)} A${R} ${R} 0 0 1 ${pt(100, R)}`, fill: 'none', stroke: 'var(--f-ink)', 'stroke-width': 1.5 }, scale);
+    for (let p = 0; p <= 100; p += 2.5) {
+      const major = p % 10 === 0, mid = p % 5 === 0;
+      const [x1, y1] = pt(p, R), [x2, y2] = pt(p, R - (major ? 18 : mid ? 11 : 6));
+      el('line', { x1, y1, x2, y2, stroke: 'var(--f-ink)', 'stroke-width': major ? 1.6 : 1 }, scale);
+      if (major) { const [tx, ty] = pt(p, R - 34); el('text', { x: tx, y: ty + 4, 'text-anchor': 'middle', fill: 'var(--f-dim)', 'font-family': FONT, 'font-size': 13 }, scale).textContent = p; }
+    }
+    const bandG = document.getElementById('d-band'), ghosts = document.getElementById('d-ghosts'), needle = document.getElementById('d-needle');
+    const bands = list => { bandG.innerHTML = ''; list.forEach(([a, b, o]) => { const r = R - 9, [x1, y1] = pt(a, r), [x2, y2] = pt(b, r); el('path', { d: `M${x1} ${y1} A${r} ${r} 0 0 1 ${x2} ${y2}`, fill: 'none', stroke: 'var(--f-ai)', 'stroke-opacity': o, 'stroke-width': 18 }, bandG); }); };
+    const big = document.getElementById('d-big'), lab = document.getElementById('d-label'), bt = document.getElementById('d-band-t'), cap = document.getElementById('d-cap');
+    const S1 = [[1.82, "375-word windows, stride 0.90 · most likely bucket · mean"], [1.98, "375-word windows, stride 0.90 · most likely bucket · word-weighted mean"], [2.01, "400-word windows, no overlap · most likely bucket · mean"], [2.04, "250-word windows, stride 0.60 · most likely bucket · mean"], [2.04, "250-word windows, stride 0.60 · most likely bucket · word-weighted mean"], [2.11, "400-word windows, no overlap · most likely bucket · word-weighted mean"], [2.33, "225-word windows, stride 0.70 · most likely bucket · word-weighted mean"], [2.33, "225-word windows, stride 0.70 · most likely bucket · mean"], [2.49, "100-word windows, stride 0.75 · most likely bucket · mean"], [2.52, "100-word windows, stride 0.75 · most likely bucket · word-weighted mean"], [9.69, "400-word windows, no overlap · expected bucket · mean"], [10.41, "400-word windows, no overlap · expected bucket · word-weighted mean"], [10.95, "375-word windows, stride 0.90 · expected bucket · mean"], [11.7, "375-word windows, stride 0.90 · expected bucket · word-weighted mean"], [12.74, "250-word windows, stride 0.60 · expected bucket · mean"], [12.96, "250-word windows, stride 0.60 · expected bucket · word-weighted mean"], [13.4, "400-word windows, no overlap · most likely bucket · softmax"], [13.49, "225-word windows, stride 0.70 · expected bucket · mean"], [13.84, "225-word windows, stride 0.70 · expected bucket · word-weighted mean"], [15.07, "375-word windows, stride 0.90 · most likely bucket · softmax"], [20.45, "100-word windows, stride 0.75 · expected bucket · mean"], [20.76, "100-word windows, stride 0.75 · expected bucket · word-weighted mean"], [24.6, "225-word windows, stride 0.70 · most likely bucket · softmax"], [24.91, "250-word windows, stride 0.60 · most likely bucket · softmax"], [28.15, "400-word windows, no overlap · expected bucket · softmax"], [31.11, "375-word windows, stride 0.90 · expected bucket · softmax"], [38.44, "400-word windows, no overlap · any-AI probability · mean"], [39.41, "400-word windows, no overlap · any-AI probability · word-weighted mean"], [40.92, "250-word windows, stride 0.60 · expected bucket · softmax"], [41.74, "375-word windows, stride 0.90 · any-AI probability · mean"], [42.65, "375-word windows, stride 0.90 · any-AI probability · word-weighted mean"], [43.44, "225-word windows, stride 0.70 · expected bucket · softmax"], [43.85, "100-word windows, stride 0.75 · most likely bucket · softmax"], [52.75, "250-word windows, stride 0.60 · any-AI probability · word-weighted mean"], [54.48, "225-word windows, stride 0.70 · any-AI probability · mean"], [55.3, "225-word windows, stride 0.70 · any-AI probability · word-weighted mean"], [65.71, "400-word windows, no overlap · any-AI probability · softmax"], [69.11, "375-word windows, stride 0.90 · any-AI probability · softmax"], [72.22, "100-word windows, stride 0.75 · expected bucket · softmax"], [83.39, "100-word windows, stride 0.75 · any-AI probability · mean"], [83.77, "100-word windows, stride 0.75 · any-AI probability · word-weighted mean"], [84.02, "250-word windows, stride 0.60 · any-AI probability · softmax"], [84.71, "225-word windows, stride 0.70 · any-AI probability · softmax"], [97.7, "100-word windows, stride 0.75 · any-AI probability · softmax"]].map(([v, l]) => ({ v, label: l }));
+    S1.push({ v: 52.09, label: 'Validated on PhantomDocket: 250-word windows, stride 0.60 · any-AI probability · mean', tag: 'validated', sel: true });
+    const S2 = [[0.1, 52.09], [0.15, 24.35], [0.2, 13.81], [0.25, 7.96], [0.3, 4.28], [0.4, 1.29], [0.5, 0.47], [0.63, 0.13]].map(([c, v]) => ({ v, label: `Validated setting, flagged at cutoff ${c.toFixed(2)}`, tag: `cutoff ${c.toFixed(2)}` }));
+    const STEPS = [
+      { frames: S1, pace: 110, rl: 'across 45 settings', cap: 'Same complaints, same 0.10 cutoff, 45 detector settings: 1.8% to 97.7% flagged. PhantomDocket picks the one that best separates known-AI filings.' },
+      { frames: S2, pace: 520, rl: 'across 8 cutoffs', cap: 'With the validated setting, the cutoff alone moves the share from 0.1% to 52%. Correcting for known error rates still leaves 4.4% to 49%.' },
+      { frames: [{ v: 37.76, label: 'ScoreMix, validated setting, no cutoff', tag: 'ScoreMix', cal: true }], pace: 0, ci: [34.42, 41.25],
+        cap: 'ScoreMix fits the whole score distribution against pre-AI complaints and PhantomDocket: 37.8%. Across the other 44 settings it stays within 29–47%.' }
+    ];
+    let timers = [];
+    function ghostsDraw(seen, done) {
+      ghosts.innerHTML = '';
+      const cur = seen[seen.length - 1];
+      seen.slice(0, -1).forEach(f => { const [x1, y1] = pt(f.v, R - 30), [x2, y2] = pt(f.v, R - 2); el('line', { x1, y1, x2, y2, stroke: 'var(--f-dim)', 'stroke-width': 1.5, 'stroke-opacity': .7 }, ghosts); });
+      const label = (f, bold) => {
+        let [tx, ty] = pt(f.v, R + 12), anchor = tx < 200 ? 'end' : tx > 280 ? 'start' : 'middle';
+        if (f.v < 15) { tx = pt(f.v, R)[0]; ty = 258; anchor = 'start'; } else if (f.v > 85) { tx = pt(f.v, R)[0]; ty = 258; anchor = 'end'; }
+        el('text', { x: tx, y: ty + 4, 'text-anchor': anchor, 'font-family': FONT, 'font-size': 13, fill: bold ? 'var(--f-ink)' : 'var(--f-dim)', 'font-weight': bold ? 600 : 400 }, ghosts).textContent = f.tag ? `${f.tag} → ${fmt(f.v)}` : fmt(f.v);
+      };
+      if (done) {
+        const vs = seen.filter(f => !f.cal);
+        if (vs.length) { label(vs.reduce((a, b) => b.v < a.v ? b : a), false); label(vs.reduce((a, b) => b.v > a.v ? b : a), false); }
+        if (cur.cal || cur.sel) label(cur, true);
+      } else if (cur.tag) label(cur, true);
+    }
+    function play(s) {
+      const st = STEPS[s]; timers.forEach(clearTimeout); timers = []; bands([]); ghosts.innerHTML = '';
+      cap.textContent = st.cap;
+      const all = st.frames.filter(x => !x.cal).map(x => x.v), seen = [], last = st.frames.length - 1;
+      const show = (f, i) => {
+        seen.push(f);
+        const vs = seen.filter(x => !x.cal).map(x => x.v), lo = Math.min(...vs), hi = Math.max(...vs);
+        needle.style.transform = `rotate(${-90 + f.v * 1.8}deg)`;
+        const b = hi > lo ? [[lo, hi, .15]] : [];
+        if (f.cal) b.push([st.ci[0], st.ci[1], .38]);
+        bands(b); ghostsDraw(seen, i === last);
+        big.textContent = fmt(f.v); big.classList.toggle('cal', !!f.cal); lab.textContent = f.label;
+        bt.innerHTML = f.cal ? '<b>34.4–41.2%</b>95% interval, shaded' : `<b>${fmt(Math.min(...all))}–${fmt(Math.max(...all))}</b>${st.rl}`;
+      };
+      if (reduce) { st.frames.forEach(show); return; }
+      st.frames.forEach((f, i) => timers.push(setTimeout(() => show(f, i), i * st.pace + (f.sel ? 600 : 0))));
+    }
+    const btns = document.querySelectorAll('#fig-dial .seg button');
+    btns.forEach(b => b.addEventListener('click', () => { btns.forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false')); play(+b.dataset.s); }));
+    // Start the animation when the figure first scrolls into view.
+    const fig = document.getElementById('fig-dial'); let started = false;
+    const start = () => { if (!started) { started = true; play(0); } };
+    if ('IntersectionObserver' in window) new IntersectionObserver((es, o) => { if (es.some(e => e.isIntersecting)) { start(); o.disconnect(); } }, { threshold: .3 }).observe(fig);
+    else start();
+  })();
 
 
   /* ---------- Xaliwar noun builder (Ex. E) ---------- */
@@ -1137,7 +1159,8 @@ input[type=range] { width: 100%; accent-color: var(--red); }
   /* ---------- Graph data: works (boxed) linked to their keywords ---------- */
   const works = [
     { label: 'Opening Brief', name: "Opening Brief, page 1", links: [['Page 1', '#brief']], w: ['law', 'courts', 'linguistics', 'evaluation', 'generative AI', 'AI governance', 'AI safety', 'access to justice', 'institutional capacity'] },
-    { label: 'Detection Objection', name: 'Detection Objection: generative AI in state civil courts (Ex. A)', links: [['Ex. A', '#ex-a'], ['Publication', '#toa-a']], w: ['law', 'courts', 'detection', 'datasets', 'PhantomDocket', 'evaluation', 'generative AI', 'institutional capacity'] },
+    { label: 'Detection Objection', name: 'Detection Objection: generative AI in state civil courts (Ex. A)', links: [['Ex. A', '#ex-a'], ['Publication', '#toa-a'], ['Paper', 'https://dho.stanford.edu/wp-content/uploads/GenAI_Courts.pdf'], ['Project page', 'https://detection-objection.reglabapp.com/']], w: ['law', 'courts', 'detection', 'datasets', 'PhantomDocket', 'evaluation', 'generative AI', 'institutional capacity'] },
+    { label: 'PhantomDocket', name: 'PhantomDocket: court filings with verified AI use (dataset)', links: [['Dataset', 'https://huggingface.co/datasets/Arifov/PhantomDocket'], ['Publication', '#toa-e'], ['Ex. A', '#ex-a']], w: ['law', 'courts', 'datasets', 'detection', 'benchmarks', 'generative AI'] },
     { label: 'Legal Retrieval Benchmark', name: 'Legal Retrieval Benchmark: Bar Exam QA and Housing Statute QA (Ex. B)', links: [['Ex. B', '#ex-b'], ['Publication', '#toa-b'], ['Paper', 'https://doi.org/10.1145/3709025.3712219']], w: ['law', 'legal research', 'statutory law', 'housing law', 'retrieval', 'benchmarks', 'evaluation', 'generative AI', 'access to justice'] },
     { label: 'Eviction Defense Tool', name: 'Eviction Defense Tool: flagging defects in eviction notices (Ex. I)', links: [['Ex. I', '#ex-i'], ['Class report', 'https://justiceinnovation.law.stanford.edu/ai-for-legal-help-2026-class-report-scoping-building-and-testing-new-legal-aid-tech-systems/']], w: ['law', 'housing law', 'courts', 'generative AI', 'human supervision', 'access to justice'] },
     { label: 'ECHR Guides', name: 'ECHR Guides: how legal guidance changes over time (Ex. C)', links: [['Ex. C', '#ex-c']], w: ['law', 'legal research'] },
@@ -1428,7 +1451,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
   function show(v) {
     Object.entries(VIEWS).forEach(([k, el]) => { el.hidden = k !== v; });
     current = v;
-    if (v === 'home') layoutHome(); else { setRunning(false); numberLines(VIEWS[v]); if (v === 'exhibits') drawFig(); }
+    if (v === 'home') layoutHome(); else { setRunning(false); numberLines(VIEWS[v]); }
   }
   function route() {
     const doFlash = flashNext; flashNext = false;
@@ -1477,7 +1500,7 @@ input[type=range] { width: 100%; accent-color: var(--red); }
     if (!settled) { for (let i = 0; i < 500; i++) tick(1 - i / 600); setHomes(); settled = true; }
     update();
   }
-  function relayout() { if (current === 'home') layoutHome(); else { numberLines(VIEWS[current]); if (current === 'exhibits') drawFig(); } }
+  function relayout() { if (current === 'home') layoutHome(); else { numberLines(VIEWS[current]); } }
   let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(relayout, 150); });
   route();
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => { settled = false; relayout(); if (current === 'home' && location.hash === '#graph') scrollTo(0, pinStart + scrollLen); });
