@@ -234,9 +234,9 @@ figure.figure { margin-inline: 0; }
 .exh { display: flex; flex-direction: column; }
 .exh + .exh { margin-top: var(--lh); }
 .exh .t { font-weight: 700; font-size: var(--fs); }
-.finds { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; }
-@media (max-width: 520px) { .finds { grid-template-columns: minmax(0, 1fr); } }
-.finds li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; border-bottom: 1px dotted #c9c9c4; }
+.finds { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, auto); grid-auto-flow: column; column-gap: 32px; }
+@media (max-width: 520px) { .finds { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-auto-flow: row; } }
+.finds li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; border-bottom: 1px dotted #c9c9c4; background: linear-gradient(var(--red), var(--red)) 0 100% / calc(var(--v) * 1%) 2px no-repeat; }
 .finds b { font-variant-numeric: tabular-nums; }
 .exh .m { font-style: italic; color: var(--ink-soft); }
 .exh code { font-family: var(--font-mono); font-size: .86em; background: color-mix(in srgb, var(--mark) 45%, transparent); padding: 0 3px; border-radius: 2px; }
@@ -577,12 +577,12 @@ figure.figure { margin-inline: 0; }
         <p class="m">Stanford RegLab, 2026. <a class="xref" href="https://dho.stanford.edu/wp-content/uploads/GenAI_Courts.pdf" target="_blank" rel="noopener">Paper ↗</a> <a class="xref" href="https://detection-objection.reglabapp.com/" target="_blank" rel="noopener">Project page ↗</a> <a class="xref" href="https://huggingface.co/datasets/Arifov/PhantomDocket" target="_blank" rel="noopener">PhantomDocket ↗</a></p>
         <p class="para">I lead a team measuring AI-assisted drafting in four state trial court systems. Detectors struggle here: a quarter of filing tokens are boilerplate, and one detector flagged under 5% to almost 50% of filings depending on its settings. We built <a href="https://huggingface.co/datasets/Arifov/PhantomDocket" target="_blank" rel="noopener"><code>PhantomDocket</code></a>, 980 filings known to have used generative AI, and <code>ScoreMix</code>, an estimator robust to those settings. In 127,518 complaints, prevalence is near zero before 2023, then rises sharply.</p>
         <ul class="finds" aria-label="Estimated share of 2026 complaints with AI-assisted drafting">
-          <li><span>Santa Clara, self-represented</span><b>72%</b></li>
-          <li><span>Santa Clara, all</span><b>38%</b></li>
-          <li><span>San Francisco</span><b>36%</b></li>
-          <li><span>Oklahoma and Tulsa</span><b>16&ndash;17%</b></li>
+          <li style="--v:37.8"><span>Santa Clara, Cal.</span><b>38%</b></li>
+          <li style="--v:35.6"><span>San Francisco, Cal.</span><b>36%</b></li>
+          <li style="--v:16.9"><span>Tulsa County, Okla.</span><b>17%</b></li>
+          <li style="--v:16.1"><span>Oklahoma County, Okla.</span><b>16%</b></li>
         </ul>
-        <p class="fig-cap">Share of 2026 complaints with AI-assisted drafting. Likely conservative.</p>
+        <p class="fig-cap">Share of 2026 complaints with AI-assisted drafting; 72% for self-represented filers in Santa Clara.</p>
         <div class="figure" id="fig-dial">
           <div class="fig-head"><b>Fig. 1. One set of complaints, many answers</b><span>Santa Clara 2026 · real estimates · <a class="xref" href="https://detection-objection.reglabapp.com/" target="_blank" rel="noopener">from project page ↗</a></span></div>
           <div class="seg" role="group" aria-label="Step">
