@@ -234,8 +234,9 @@ figure.figure { margin-inline: 0; }
 .exh { display: flex; flex-direction: column; }
 .exh + .exh { margin-top: var(--lh); }
 .exh .t { font-weight: 700; font-size: var(--fs); }
-.finds { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, auto); grid-auto-flow: column; column-gap: 32px; }
-@media (max-width: 520px) { .finds { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-auto-flow: row; } }
+.finds { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(3, auto); grid-auto-flow: column; column-gap: 32px; }
+.finds li:nth-child(5) { grid-area: 3 / 1; } .finds li:nth-child(6) { grid-area: 3 / 2; }
+@media (max-width: 520px) { .finds { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; grid-auto-flow: row; } .finds li:nth-child(n) { grid-area: auto; } }
 .finds li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; border-bottom: 1px dotted #c9c9c4; background: linear-gradient(var(--red), var(--red)) 0 100% / calc(var(--v) * 1%) 2px no-repeat; }
 .finds b { font-variant-numeric: tabular-nums; }
 .exh .m { font-style: italic; color: var(--ink-soft); }
@@ -581,9 +582,11 @@ figure.figure { margin-inline: 0; }
           <li style="--v:35.6"><span>San Francisco, Cal.</span><b>36%</b></li>
           <li style="--v:16.9"><span>Tulsa County, Okla.</span><b>17%</b></li>
           <li style="--v:16.1"><span>Oklahoma County, Okla.</span><b>16%</b></li>
+          <li style="--v:71.6"><span>Santa Clara, pro se</span><b>72%</b></li>
+          <li style="--v:33.5"><span>Santa Clara, represented</span><b>34%</b></li>
         </ul>
-        <p class="fig-cap">Share of 2026 complaints with AI-assisted drafting; 72% for self-represented filers in Santa Clara.</p>
-        <div class="figure" id="fig-dial">
+        <p class="fig-cap">Share of 2026 complaints with AI-assisted drafting. Likely conservative.</p>
+        <div class="figure" id="fig-dial" style="margin-top: 0">
           <div class="fig-head"><b>Fig. 1. One set of complaints, many answers</b><span>Santa Clara 2026 · real estimates · <a class="xref" href="https://detection-objection.reglabapp.com/" target="_blank" rel="noopener">from project page ↗</a></span></div>
           <div class="seg" role="group" aria-label="Step">
             <button type="button" data-s="0" aria-pressed="true">1 Setting</button>
