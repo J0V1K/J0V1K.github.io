@@ -1417,10 +1417,10 @@ figure.figure { margin-inline: 0; }
     if (i < 0) { info.innerHTML = infoDefault; return; }
     const n = nodes[i];
     if (n.k === 'work') {
-      info.innerHTML = `<b style="color:var(--dark-ink)">${esc(n.work.name)}</b> · ${n.work.w.length} keywords<div class="ents"><span class="ent">${n.work.links.map(linkHtml).join('')}</span></div>`;
+      info.innerHTML = `<b style="color:var(--dark-ink)">${esc(n.work.name)}</b> · ${n.work.w.length} keywords<div class="ents"><span class="ent">${linkHtml(n.work.links[0])}</span></div>`;
       return;
     }
-    const ents = n.in.map(wk => `<span class="ent">${esc(wk.label)}${wk.links.map(linkHtml).join('')}</span>`).join('');
+    const ents = n.in.map(wk => `<span class="ent">${esc(wk.label)}${linkHtml(wk.links[0])}</span>`).join('');
     info.innerHTML = `<b style="color:var(--${n.k})">${esc(n.w)}</b> · ${({ cs: 'computing', lang: 'language' })[n.k] || n.k} · ${sel >= 0 ? 'pinned' : 'click to pin'}<div class="ents">${ents}</div>`;
   }
   let down = null;
