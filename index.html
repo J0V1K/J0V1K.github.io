@@ -268,24 +268,27 @@ figure.figure { margin-inline: 0; }
 .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
 .pd-replay { font: 500 11px var(--font-mono); color: var(--f-dim); background: none; border: 1px solid var(--f-line); border-radius: 4px; padding: 2px 8px; cursor: pointer; }
 .pd-replay:hover { color: var(--f-ink); border-color: var(--f-dim); }
-.pd-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
-.pd-steps li { display: grid; grid-template-columns: minmax(0, 1fr) 3.4em minmax(0, 15em) 6.2em; align-items: center; gap: 10px; font-size: 13px; line-height: 1.3; }
-.pd-steps b { font: 500 12.5px var(--font-mono); text-align: right; font-variant-numeric: tabular-nums; color: var(--f-ink); }
-.pd-steps .pd-l { color: var(--f-ink); }
-.pd-steps em { font: normal 11.5px var(--font-mono); color: var(--f-dim); text-align: right; }
-.pd-bar { height: 12px; position: relative; display: block; }
-.pd-bar i { position: absolute; right: 0; top: 0; bottom: 0; width: calc(var(--n) / 1848 * 100%); background: #b8bcc2; border-radius: 1px; transition: width .6s cubic-bezier(.3, .9, .4, 1); }
-.pd-steps .end .pd-bar i { background: var(--f-ai); }
-.pd-steps li { opacity: 1; transition: opacity .35s; }
-#fig-pd.armed .pd-steps li, #fig-pd.armed .pd-mix { opacity: 0; }
-#fig-pd.armed .pd-bar i { width: calc(var(--prev, 1848) / 1848 * 100%); }
-#fig-pd.armed .pd-stack i { flex-grow: 0; }
+#fig-pd { --pd-band: #c3c7cb; --pd-track: rgba(17, 18, 20, .08); --pd-end: rgba(158, 43, 66, .32); }
+.pd-scroll { overflow-x: auto; }
+#pdflow { display: block; width: 100%; min-width: 500px; height: auto; overflow: visible; font-family: var(--font-mono); }
+#pdflow text { font-size: 11px; }
+#pdflow .n { font-weight: 500; fill: var(--f-ink); }
+#pdflow .l { fill: var(--f-dim); }
+#pdflow .acc { fill: var(--f-ai); font-weight: 500; }
+#pdflow.pd-go .sk-gx { transform-box: fill-box; transform-origin: left center; animation: pd-gx .4s ease-out both; }
+#pdflow.pd-go .sk-dr { stroke-dasharray: 1; animation: pd-draw .5s ease-out both; }
+#pdflow.pd-go .sk-f { animation: pd-fade .3s ease-out both; }
+#pdflow.armed .sk-gx { transform: scaleX(0); } #pdflow.armed .sk-dr { stroke-dasharray: 1; stroke-dashoffset: 1; } #pdflow.armed .sk-f { opacity: 0; }
+@keyframes pd-gx { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes pd-draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+@keyframes pd-fade { from { opacity: 0; } to { opacity: 1; } }
 .pd-mix { display: grid; gap: 6px; transition: opacity .35s; }
+#fig-pd.armed .pd-mix { opacity: 0; }
+#fig-pd.armed .pd-stack i { flex-grow: 0; }
 .pd-stack { display: flex; height: 14px; gap: 2px; }
 .pd-stack i { flex: var(--k) 1 0; min-width: 0; transition: flex-grow .8s cubic-bezier(.3, .9, .4, 1); }
 .pd-mix i.h { background: var(--f-ai); } .pd-mix i.s { background: color-mix(in srgb, var(--f-ai) 38%, #fff); } .pd-mix i.c { background: #b8bcc2; }
 .pd-mix .legend b { font: 500 12px var(--font-mono); color: var(--f-ink); margin-right: 4px; }
-@media (max-width: 520px) { .pd-steps li { grid-template-columns: minmax(0, 1fr) 3.4em; } .pd-steps .pd-l { grid-column: 1 / -1; grid-row: 2; font-size: 12px; } .pd-steps em { display: none; } }
 
 /* Conlang builder */
 .cl-ctl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px 12px; }
@@ -645,14 +648,7 @@ figure.figure { margin-inline: 0; }
         <p class="para">To calibrate a detector you need filings where AI use is known. Judges supply them: when a ruling calls out a hallucinated citation, the filing behind it almost certainly used generative AI. We started from Charlotin&rsquo;s AI Hallucination Cases Database, found each case&rsquo;s docket, and pulled the filing the judge flagged. For contrast, we pulled filings by the judge and opposing counsel in the same cases.</p>
         <div class="figure" id="fig-pd">
           <div class="fig-head"><b>Fig. 2. From a judge&rsquo;s ruling to the filing</b><button type="button" class="pd-replay">Replay ↻</button></div>
-          <ol class="pd-steps" aria-label="Collection funnel, in cases">
-            <li style="--n:1848"><span class="pd-bar"><i></i></span><b>1,848</b><span class="pd-l">rulings in Charlotin&rsquo;s database</span></li>
-            <li style="--n:1279"><span class="pd-bar"><i></i></span><b>1,279</b><span class="pd-l">in U.S. courts</span><em>&minus;569 abroad</em></li>
-            <li style="--n:1164"><span class="pd-bar"><i></i></span><b>1,164</b><span class="pd-l">docket found</span><em>&minus;115</em></li>
-            <li style="--n:928"><span class="pd-bar"><i></i></span><b>928</b><span class="pd-l">on CourtLink or Bloomberg Law</span><em>&minus;236</em></li>
-            <li style="--n:679"><span class="pd-bar"><i></i></span><b>679</b><span class="pd-l">flagged filing named in docket</span><em>&minus;249</em></li>
-            <li class="end" style="--n:619"><span class="pd-bar"><i></i></span><b>619</b><span class="pd-l">cases retrieved</span><em>&minus;60</em></li>
-          </ol>
+          <div class="pd-scroll"><svg id="pdflow" role="img" aria-label="Of 1,848 rulings in Charlotin&rsquo;s database, 1,279 are from U.S. courts; 1,164 have a docket we found; 928 are on CourtLink or Bloomberg Law; 679 name the flagged filing in the docket; 619 cases were retrieved, yielding 980 flagged filings."></svg></div>
           <div class="pd-mix" aria-label="Dataset composition: 980 hallucination filings, 538 other filings by the same party, 771 controls">
             <div class="pd-stack"><i class="h" style="--k:980"></i><i class="s" style="--k:538"></i><i class="c" style="--k:771"></i></div>
             <div class="legend"><span><i class="h"></i><b>980</b> flagged filings</span><span><i class="s"></i><b>538</b> same filer, unconfirmed</span><span><i class="c"></i><b>771</b> judge &amp; opposing counsel</span></div>
@@ -1148,28 +1144,57 @@ figure.figure { margin-inline: 0; }
   })();
 
 
-  /* ---------- Fig. 2: PhantomDocket funnel (Ex. A-1) ---------- */
+  /* ---------- Fig. 2: PhantomDocket Sankey (Ex. A-1) ---------- */
   (() => {
     const fig = document.getElementById('fig-pd'); if (!fig) return;
-    const rows = [...fig.querySelectorAll('.pd-steps li')], mix = fig.querySelector('.pd-mix');
-    rows.forEach((li, i) => li.style.setProperty('--prev', i ? rows[i - 1].style.getPropertyValue('--n') : 1848));
+    const svg = document.getElementById('pdflow'), mix = fig.querySelector('.pd-mix');
+    const NS = 'http://www.w3.org/2000/svg';
+    const stages = [[1848, 'Charlotin', 'database'], [1279, 'U.S.', 'cases'], [1164, 'docket', 'found'], [928, 'CourtLink or', 'Bloomberg Law'], [679, 'filing named', 'in the docket'], [619, 'retrieved', 'cases']];
+    const drops = [['outside', 'the U.S.'], ['no docket', 'found'], ['not in', 'databases'], ['no filing', 'entry'], ['could not', 'retrieve']];
+    const W = 560, END = 92, CW = (W - END) / 5, Y0 = 46, HM = 62, H = 196;
+    const h = n => n / 1848 * HM, fmt = n => n.toLocaleString('en-US');
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    const el = (tag, attrs, cls, delay, txt) => {
+      const e = document.createElementNS(NS, tag);
+      for (const k in attrs) e.setAttribute(k, attrs[k]);
+      if (cls) { e.setAttribute('class', cls); e.style.animationDelay = delay + 's'; }
+      if (txt !== undefined) e.textContent = txt;
+      svg.appendChild(e); return e;
+    };
+    const STEP = .42;
+    for (let i = 0; i < 5; i++) {
+      const x = i * CW, next = stages[i + 1][0], gone = stages[i][0] - next, d = i * STEP;
+      el('path', { d: `M${x},${Y0} H${x + CW} V${Y0 + h(next)} H${x} Z`, fill: i === 4 ? 'var(--pd-end)' : 'var(--pd-band)' }, 'sk-gx', d + .05);
+      const w = h(gone), yc = Y0 + h(next) + w / 2, xd = x + 16 + w / 2;
+      el('path', { d: `M${x},${yc} C${x + 12},${yc} ${xd},${yc + 4} ${xd},${yc + 14} V${H - 40}`, fill: 'none', stroke: 'var(--pd-track)', 'stroke-width': Math.max(w, 1.5), pathLength: 1 }, 'sk-dr', d + .15);
+      const tx = xd + Math.max(w, 1.5) / 2 + 5;
+      el('text', { x: tx, y: H - 30 }, 'sk-f n', d + .55, fmt(gone));
+      el('text', { x: tx, y: H - 16 }, 'sk-f l', d + .55, drops[i][0]);
+      el('text', { x: tx, y: H - 3 }, 'sk-f l', d + .55, drops[i][1]);
+    }
+    stages.forEach(([n, l1, l2], i) => {
+      const x = i * CW, d = i * STEP, last = i === 5;
+      el('line', { x1: x, x2: x, y1: Y0, y2: Y0 + h(n), stroke: 'var(--f-ink)', 'stroke-width': 1.5 }, 'sk-f', d);
+      el('text', { x: x + 5, y: 9 }, 'sk-f l', d, l1);
+      el('text', { x: x + 5, y: 22 }, 'sk-f l', d, l2);
+      el('text', { x: x + 5, y: 37 }, 'sk-f ' + (last ? 'acc' : 'n'), d, fmt(n));
+    });
+    el('text', { x: 5 * CW + 10, y: Y0 + 20 }, 'sk-f acc', 5 * STEP + .2, '980 filings');
     if (matchMedia('(prefers-reduced-motion: reduce)').matches) { fig.querySelector('.pd-replay').hidden = true; return; }
-    let timers = [];
+    let timer;
     const play = () => {
-      timers.forEach(clearTimeout); timers = [];
-      fig.classList.add('armed'); rows.forEach(li => li.style.opacity = ''); mix.style.opacity = '';
-      fig.querySelectorAll('.pd-bar i').forEach(e => e.style.width = ''); fig.querySelectorAll('.pd-stack i').forEach(e => e.style.flexGrow = '');
-      void fig.offsetWidth;
-      rows.forEach((li, i) => {
-        timers.push(setTimeout(() => { li.style.opacity = 1; }, i * 520));
-        timers.push(setTimeout(() => { li.querySelector('.pd-bar i').style.width = `calc(var(--n) / 1848 * 100%)`; }, i * 520 + 180));
-      });
-      const t = rows.length * 520 + 200;
-      timers.push(setTimeout(() => { mix.style.opacity = 1; }, t));
-      timers.push(setTimeout(() => { fig.querySelectorAll('.pd-stack i').forEach(e => e.style.flexGrow = e.style.getPropertyValue('--k')); }, t + 150));
+      clearTimeout(timer);
+      svg.classList.remove('pd-go'); svg.classList.add('armed'); fig.classList.add('armed');
+      fig.querySelectorAll('.pd-stack i').forEach(e => e.style.flexGrow = '');
+      void svg.getBoundingClientRect();
+      svg.classList.remove('armed'); svg.classList.add('pd-go');
+      timer = setTimeout(() => {
+        fig.classList.remove('armed');
+        setTimeout(() => fig.querySelectorAll('.pd-stack i').forEach(e => e.style.flexGrow = e.style.getPropertyValue('--k')), 150);
+      }, 5 * STEP * 1000 + 700);
     };
     fig.querySelector('.pd-replay').addEventListener('click', play);
-    fig.classList.add('armed');
+    svg.classList.add('armed'); fig.classList.add('armed');
     if ('IntersectionObserver' in window) new IntersectionObserver((es, o) => { if (es.some(e => e.isIntersecting)) { o.disconnect(); play(); } }, { threshold: .35 }).observe(fig);
     else play();
   })();
